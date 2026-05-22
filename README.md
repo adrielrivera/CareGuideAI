@@ -1,13 +1,16 @@
 # CareGuideAI
 
-This repository contains the materials for the CareGuideAI project.
+CareGuideAI is a static telehealth intake website focused on patient
+information capture and clinician handoff.
 
-Current project files:
+## What it includes
 
-- `report.docx`
-- `d1_prd.txt`
-- `d2_trd.txt`
-- `d3_af.txt`
-- `d4_db.txt`
-- `d5_bs.txt`
-- `d6_ip.txt`
+- A branded landing page for the intake experience
+- A responsive patient intake form for symptoms, history, and visit goals
+- A live sidebar summary that updates as the patient types
+- A generated clinician review summary with copy-to-clipboard support
+
+## Important note
+
+This project intentionally does not provide automated diagnoses or medication
+recommendations. It is designed to support a licensed clinician review flow.

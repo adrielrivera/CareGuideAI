@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CareGuideAI Intake</title>
+    <meta
+      name="description"
+      content="A human-reviewed telehealth intake experience that gathers patient details and symptoms for clinician follow-up."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <div class="safety-bar">
+        <p>
+          This experience gathers intake details for a licensed clinician. It
+          does not generate medical diagnoses or medication recommendations.
+        </p>
+        <a href="#emergency-note">Emergency help information</a>
+      </div>
+
+      <header class="hero reveal">
+        <nav class="topbar">
+          <div class="brand-lockup">
+            <span class="brand-mark">CG</span>
+            <div>
+              <p class="eyebrow">CareGuideAI</p>
+              <p class="brand-copy">Human-guided telehealth intake</p>
+            </div>
+          </div>
+          <a class="ghost-link" href="#intake">Start intake</a>
+        </nav>
+
+        <div class="hero-grid">
+          <section class="hero-copy">
+            <p class="eyebrow">Built for fast first contact</p>
+            <h1>
+              A calmer, clearer intake flow before the patient speaks with a
+              real doctor.
+            </h1>
+            <p class="hero-text">
+              Patients can share personal details, symptoms, medications, and
+              care goals in one secure-looking flow. The result is a structured
+              visit summary for clinician review, not an automated diagnosis.
+            </p>
+            <div class="cta-row">
+              <a class="primary-button" href="#intake">Open patient intake</a>
+              <a class="secondary-button" href="#workflow">See workflow</a>
+            </div>
+            <ul class="trust-points">
+              <li>Human clinician handoff</li>
+              <li>Live summary for patient review</li>
+              <li>Clear emergency escalation messaging</li>
+            </ul>
+          </section>
+
+          <aside class="hero-panel">
+            <div class="hero-card accent-card">
+              <p class="mini-label">What this site does</p>
+              <h2>Transforms messy symptom notes into a readable care summary.</h2>
+              <p>
+                Organize symptoms, history, allergies, and visit goals so the
+                doctor starts with the right context.
+              </p>
+            </div>
+            <div class="hero-card metric-card">
+              <div>
+                <p class="metric-value">3 steps</p>
+                <p class="metric-copy">Patient fills intake, reviews summary, and shares it with the care team.</p>
+              </div>
+              <div>
+                <p class="metric-value">0</p>
+                <p class="metric-copy">Automated diagnoses or prescriptions shown to the patient.</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </header>
+
+      <main>
+        <section id="workflow" class="workflow reveal">
+          <div class="section-heading">
+            <p class="eyebrow">Workflow</p>
+            <h2>Designed to support care teams, not replace them.</h2>
+          </div>
+          <div class="workflow-grid">
+            <article class="workflow-card">
+              <span>01</span>
+              <h3>Patient intake</h3>
+              <p>
+                Capture demographics, current symptoms, medications, allergies,
+                red flags, and visit goals in one place.
+              </p>
+            </article>
+            <article class="workflow-card">
+              <span>02</span>
+              <h3>Live review</h3>
+              <p>
+                A running summary helps patients catch missing details before
+                they submit anything to the care team.
+              </p>
+            </article>
+            <article class="workflow-card">
+              <span>03</span>
+              <h3>Clinician handoff</h3>
+              <p>
+                The site produces a structured brief that a licensed clinician
+                can use for the next human step of care.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section id="intake" class="intake reveal">
+          <div class="section-heading intake-heading">
+            <div>
+              <p class="eyebrow">Patient intake</p>
+              <h2>Complete the pre-visit form</h2>
+            </div>
+            <p class="section-note">
+              Patients should describe what they are experiencing as clearly as
+              they can. Urgent symptoms still require immediate human help.
+            </p>
+          </div>
+
+          <div class="intake-layout">
+            <form id="intake-form" class="intake-form" novalidate>
+              <section class="form-card">
+                <div class="card-heading">
+                  <p class="mini-label">Section 1</p>
+                  <h3>Personal details</h3>
+                </div>
+                <div class="field-grid two-col">
+                  <label>
+                    First name
+                    <input type="text" name="firstName" placeholder="Jamie" required />
+                  </label>
+                  <label>
+                    Last name
+                    <input type="text" name="lastName" placeholder="Santos" required />
+                  </label>
+                  <label>
+                    Age
+                    <input type="number" name="age" min="0" max="120" placeholder="34" required />
+                  </label>
+                  <label>
+                    Pronouns
+                    <input type="text" name="pronouns" placeholder="she/her" />
+                  </label>
+                  <label>
+                    Email
+                    <input type="email" name="email" placeholder="jamie@example.com" required />
+                  </label>
+                  <label>
+                    Phone
+                    <input type="tel" name="phone" placeholder="+1 555 867 5309" required />
+                  </label>
+                </div>
+              </section>
+
+              <section class="form-card">
+                <div class="card-heading">
+                  <p class="mini-label">Section 2</p>
+                  <h3>Medical context</h3>
+                </div>
+                <div class="field-grid">
+                  <label>
+                    Allergies
+                    <textarea
+                      name="allergies"
+                      rows="3"
+                      placeholder="List allergies, reactions, or write none."
+                    ></textarea>
+                  </label>
+                  <label>
+                    Current medications
+                    <textarea
+                      name="medications"
+                      rows="3"
+                      placeholder="Include dosage when known."
+                    ></textarea>
+                  </label>
+                  <label>
+                    Existing conditions
+                    <textarea
+                      name="conditions"
+                      rows="3"
+                      placeholder="Asthma, diabetes, migraines, anxiety, or other relevant history."
+                    ></textarea>
+                  </label>
+                  <label>
+                    Pregnancy status
+                    <select name="pregnancyStatus">
+                      <option value="">Select one</option>
+                      <option value="Not applicable">Not applicable</option>
+                      <option value="Pregnant">Pregnant</option>
+                      <option value="Possibly pregnant">Possibly pregnant</option>
+                      <option value="Prefer not to say">Prefer not to say</option>
+                    </select>
+                  </label>
+                </div>
+              </section>
+
+              <section class="form-card">
+                <div class="card-heading">
+                  <p class="mini-label">Section 3</p>
+                  <h3>Symptoms and timeline</h3>
+                </div>
+                <div class="field-grid">
+                  <label>
+                    Main concern
+                    <input
+                      type="text"
+                      name="mainConcern"
+                      placeholder="Sore throat with fever"
+                      required
+                    />
+                  </label>
+                  <label>
+                    How long has this been going on?
+                    <select name="duration">
+                      <option value="">Select a timeframe</option>
+                      <option value="Less than 24 hours">Less than 24 hours</option>
+                      <option value="1 to 3 days">1 to 3 days</option>
+                      <option value="4 to 7 days">4 to 7 days</option>
+                      <option value="More than 1 week">More than 1 week</option>
+                      <option value="Recurring">Recurring</option>
+                    </select>
+                  </label>
+                  <label>
+                    Severity
+                    <div class="range-wrap">
+                      <input type="range" name="severity" min="1" max="10" value="4" />
+                      <div class="range-caption">
+                        <span>Mild</span>
+                        <output for="severity" id="severity-output">4/10</output>
+                        <span>Severe</span>
+                      </div>
+                    </div>
+                  </label>
+                  <label>
+                    Temperature (optional)
+                    <input
+                      type="number"
+                      name="temperature"
+                      min="90"
+                      max="110"
+                      step="0.1"
+                      placeholder="98.6"
+                    />
+                  </label>
+                  <fieldset class="chip-fieldset">
+                    <legend>Symptoms</legend>
+                    <div class="chip-grid">
+                      <label class="chip">
+                        <input type="checkbox" name="symptoms" value="Fever" />
+                        <span>Fever</span>
+                      </label>
+                      <label class="chip">
+                        <input type="checkbox" name="symptoms" value="Cough" />
+                        <span>Cough</span>
+                      </label>
+                      <label class="chip">
+                        <input type="checkbox" name="symptoms" value="Headache" />
+                        <span>Headache</span>
+                      </label>
+                      <label class="chip">
+                        <input type="checkbox" name="symptoms" value="Fatigue" />
+                        <span>Fatigue</span>
+                      </label>
+                      <label class="chip">
+                        <input type="checkbox" name="symptoms" value="Nausea" />
+                        <span>Nausea</span>
+                      </label>
+                      <label class="chip">
+                        <input type="checkbox" name="symptoms" value="Rash" />
+                        <span>Rash</span>
+                      </label>
+                      <label class="chip">
+                        <input type="checkbox" name="symptoms" value="Body aches" />
+                        <span>Body aches</span>
+                      </label>
+                      <label class="chip">
+                        <input type="checkbox" name="symptoms" value="Sore throat" />
+                        <span>Sore throat</span>
+                      </label>
+                    </div>
+                  </fieldset>
+                  <label>
+                    Symptom details
+                    <textarea
+                      name="symptomDetails"
+                      rows="5"
+                      placeholder="Describe what you feel, when it started, what makes it better or worse, and anything you have already tried."
+                      required
+                    ></textarea>
+                  </label>
+                </div>
+              </section>
+
+              <section class="form-card">
+                <div class="card-heading">
+                  <p class="mini-label">Section 4</p>
+                  <h3>Safety signals and visit goals</h3>
+                </div>
+                <div class="field-grid">
+                  <fieldset class="chip-fieldset">
+                    <legend>Urgent symptoms to flag for the care team</legend>
+                    <div class="chip-grid">
+                      <label class="chip chip-alert">
+                        <input type="checkbox" name="redFlags" value="Chest pain" />
+                        <span>Chest pain</span>
+                      </label>
+                      <label class="chip chip-alert">
+                        <input type="checkbox" name="redFlags" value="Trouble breathing" />
+                        <span>Trouble breathing</span>
+                      </label>
+                      <label class="chip chip-alert">
+                        <input type="checkbox" name="redFlags" value="Fainting" />
+                        <span>Fainting</span>
+                      </label>
+                      <label class="chip chip-alert">
+                        <input type="checkbox" name="redFlags" value="Confusion" />
+                        <span>Confusion</span>
+                      </label>
+                      <label class="chip chip-alert">
+                        <input type="checkbox" name="redFlags" value="Swelling of lips or throat" />
+                        <span>Swelling of lips or throat</span>
+                      </label>
+                      <label class="chip chip-alert">
+                        <input type="checkbox" name="redFlags" value="Severe dehydration" />
+                        <span>Severe dehydration</span>
+                      </label>
+                    </div>
+                  </fieldset>
+                  <label>
+                    What do you need from the visit?
+                    <textarea
+                      name="visitGoals"
+                      rows="4"
+                      placeholder="Examples: understand whether this needs a same-day visit, review symptom progression, discuss safe next steps with a clinician."
+                    ></textarea>
+                  </label>
+                  <label class="consent">
+                    <input type="checkbox" name="consent" required />
+                    <span>
+                      I understand this form is for clinician review only and
+                      does not provide emergency care, diagnosis, or medication
+                      advice.
+                    </span>
+                  </label>
+                </div>
+              </section>
+
+              <div id="emergency-note" class="emergency-note">
+                <strong>Emergency note:</strong>
+                If the patient is experiencing severe chest pain, trouble
+                breathing, loss of consciousness, severe bleeding, or feels
+                unsafe, contact local emergency services immediately.
+              </div>
+
+              <div class="form-actions">
+                <button class="primary-button" type="submit">Generate visit summary</button>
+                <button class="secondary-button" type="reset">Clear form</button>
+              </div>
+            </form>
+
+            <aside class="summary-panel">
+              <div class="summary-card">
+                <div class="summary-header">
+                  <p class="mini-label">Live patient summary</p>
+                  <div class="status-pill">
+                    <span class="status-dot"></span>
+                    Draft
+                  </div>
+                </div>
+
+                <section>
+                  <h3>Patient snapshot</h3>
+                  <p id="summary-identity">No patient details entered yet.</p>
+                </section>
+
+                <section>
+                  <h3>Main concern</h3>
+                  <p id="summary-main-concern">Describe the primary concern to build the visit summary.</p>
+                </section>
+
+                <section>
+                  <h3>Symptoms reported</h3>
+                  <p id="summary-symptoms">No symptom tags selected yet.</p>
+                </section>
+
+                <section>
+                  <h3>Medical context</h3>
+                  <p id="summary-context">Allergies, medications, and relevant history will appear here.</p>
+                </section>
+
+                <section>
+                  <h3>Care team alerts</h3>
+                  <div id="summary-alerts" class="alert-stack">
+                    <p class="muted">No urgent symptom flags selected.</p>
+                  </div>
+                </section>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section id="result" class="result reveal" hidden>
+          <div class="section-heading">
+            <p class="eyebrow">Clinician handoff</p>
+            <h2>Visit summary ready to share</h2>
+          </div>
+          <div class="result-card">
+            <div class="result-banner">
+              <span>Human review required</span>
+              <p>
+                This summary is for a licensed clinician to review. It does not
+                replace medical judgment or emergency services.
+              </p>
+            </div>
+            <pre id="result-summary" class="summary-output"></pre>
+            <div class="result-actions">
+              <button id="copy-summary" class="primary-button" type="button">Copy summary</button>
+              <button id="edit-intake" class="secondary-button" type="button">Edit intake</button>
+            </div>
+            <p id="copy-feedback" class="copy-feedback" aria-live="polite"></p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
