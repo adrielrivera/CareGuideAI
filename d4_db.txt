@@ -1,0 +1,406 @@
+Document 4: UI/UX Design Brief — Visual & Interaction Design Guide
+
+Project Name:
+CareGuide AI
+
+Purpose of this UI/UX Design Brief:
+This document defines the visual style, interaction patterns, tone, accessibility requirements, and trust-building design elements for the CareGuide AI website prototype. It should guide Codex to build a professional and consistent healthcare-style website that reflects the group’s research findings and the ethical purpose of the project.
+
+1. Overall Design Direction
+
+Aesthetic:
+Clean, modern, professional healthcare design.
+
+The website should feel:
+- trustworthy
+- calm
+- clear
+- safe
+- reassuring
+- medically serious without being intimidating
+
+The website should not feel:
+- playful
+- casual
+- overly futuristic
+- alarmist
+- like a chatbot-only app
+- like a hospital emergency system
+- like an AI replacing doctors
+
+Design Goal:
+The design should help users feel guided and reassured while still taking health concerns seriously.
+
+2. User Research Link
+
+The design must reflect the group survey findings:
+- Users are frustrated by conflicting health information.
+- Users are frustrated by scary worst-case results.
+- Users want to know when to see a doctor.
+- Users trust professional medical design.
+- Users trust references to trusted sources.
+- Users value doctor-reviewed indicators and human consultation options.
+
+Therefore, the UI should:
+- organise information clearly,
+- avoid visual clutter,
+- avoid frightening visuals,
+- use professional medical styling,
+- make trusted-source and human consultation features visible,
+- present urgency levels clearly without causing unnecessary panic.
+
+3. Visual Tone
+
+Primary tone:
+Professional and clinical.
+
+Secondary tone:
+Calm and reassuring.
+
+Writing style:
+- clear
+- concise
+- human
+- non-alarmist
+- supportive
+- medically cautious
+
+Avoid:
+- dramatic language
+- casual slang
+- overly cheerful jokes
+- exaggerated claims
+- fear-based wording
+- “AI knows best” messaging
+
+Preferred wording examples:
+- “This is not a diagnosis.”
+- “Your symptoms may have several possible causes.”
+- “Consider seeking medical advice if symptoms persist or worsen.”
+- “If you experience red-flag symptoms, seek urgent medical help.”
+- “CareGuide AI supports decision-making but does not replace a qualified healthcare professional.”
+
+4. Colour Palette
+
+Primary Colour:
+Medical blue
+
+Suggested Tailwind examples:
+- blue-600 for main buttons
+- blue-700 for darker emphasis
+- blue-50 or blue-100 for soft section backgrounds
+
+Purpose:
+Blue suggests trust, professionalism, and healthcare credibility.
+
+Secondary Colour:
+Teal or soft green
+
+Suggested Tailwind examples:
+- teal-600
+- emerald-600
+- teal-50
+- emerald-50
+
+Purpose:
+Teal/green adds reassurance and calmness.
+
+Neutral Background:
+Use light neutral backgrounds.
+
+Suggested Tailwind examples:
+- slate-50
+- white
+- gray-50
+
+Text Colour:
+Use dark slate or gray for readability.
+
+Suggested Tailwind examples:
+- slate-900 for headings
+- slate-700 for body text
+- slate-500 for secondary text
+
+Warning Colour:
+Use amber for caution.
+
+Suggested Tailwind examples:
+- amber-500
+- amber-50
+
+Urgent Colour:
+Use red only for urgent red-flag warnings.
+
+Suggested Tailwind examples:
+- red-600
+- red-50
+
+Important:
+Do not overuse red because it may increase anxiety. Red should only be used for urgent warnings.
+
+5. Typography
+
+Font Style:
+Use a clean sans-serif font.
+
+Recommended:
+- Inter
+- system UI
+- Arial
+- sans-serif fallback
+
+Heading Style:
+Headings should be bold, clear, and easy to scan.
+
+Suggested hierarchy:
+- Hero heading: large, bold
+- Section heading: medium-large, bold
+- Card heading: medium, semi-bold
+- Body text: readable, not too small
+- Disclaimer text: still readable, not hidden
+
+Do not make disclaimers tiny. Ethical warnings should be visible.
+
+6. Layout Principles
+
+General Layout:
+Use a clean card-based layout with generous spacing.
+
+Page Width:
+Use a centered max-width container for readability.
+
+Spacing:
+Use comfortable spacing between sections.
+Avoid cramped text.
+
+Visual Hierarchy:
+Important information should be easy to find:
+1. Urgency level
+2. Disclaimer
+3. Next steps
+4. Human consultation
+5. Trusted sources / limitations
+
+Do not bury safety warnings at the bottom of the page.
+
+7. Component Style
+
+Cards:
+Use rounded cards with subtle borders and soft shadows.
+
+Buttons:
+Use clear primary and secondary button styles.
+
+Primary CTA:
+Blue filled button.
+
+Secondary CTA:
+White or light background with blue border/text.
+
+Warning Button:
+Only use red or amber for emergency-related action.
+
+Badges:
+Use badges for:
+- AI-assisted
+- Not a diagnosis
+- Human consultation recommended
+- Prototype only
+- Trusted-source placeholder
+
+Urgency Cards:
+Use three visually distinct urgency result cards:
+
+Low:
+Soft green / teal styling.
+Message: monitor symptoms and seek help if symptoms persist or worsen.
+
+Moderate:
+Amber styling.
+Message: consider consulting a doctor soon.
+
+Urgent:
+Red styling.
+Message: seek urgent medical help for red-flag symptoms.
+
+8. Page-Specific UI Requirements
+
+Home Page:
+Should include:
+- hero section
+- tagline
+- disclaimer banner
+- Start Symptom Check CTA
+- feature cards
+- trust-building section
+- brief explanation of how the platform works
+
+Symptom Checker Page:
+Should include:
+- form split into sections
+- privacy reminder before the form
+- required field labels
+- severity scale
+- red-flag checklist
+- submit button
+- validation messages
+
+Urgency Results Page:
+Should include:
+- large urgency badge/card
+- “This is not a diagnosis” notice
+- explanation of result
+- general next steps
+- human consultation CTA
+- red-flag warning if relevant
+- Start Over button
+
+Emergency Red Flags Page:
+Should include:
+- red-flag cards
+- calm but direct emergency guidance
+- disclaimer that the list is not exhaustive
+- CTA to seek urgent help if symptoms are severe
+
+Human Consultation Page:
+Should include:
+- explanation of why human review matters
+- mock consultation CTA
+- prototype notice
+- situations where users should seek help
+
+Trusted Sources Page:
+Should include:
+- source transparency explanation
+- placeholder source cards
+- statement that real deployment requires verified medical review
+- no fabricated detailed medical claims
+
+Privacy & AI Limitations Page:
+Should include:
+- no data storage statement
+- AI limitation cards
+- privacy notice
+- human verification reminder
+- emergency disclaimer
+
+9. Interaction Design
+
+Buttons:
+Buttons should have clear labels:
+- Start Symptom Check
+- View Guidance
+- Consult a Human Doctor
+- View Emergency Red Flags
+- Start Over
+- Read AI Limitations
+
+Hover States:
+Use subtle hover effects.
+
+Form Validation:
+Validation messages should be calm and helpful.
+Example:
+“Please describe your symptoms before continuing.”
+
+Avoid harsh wording:
+“Error. Invalid submission.”
+
+Loading State:
+If used, show:
+“Preparing your guidance…”
+
+Do not use:
+“Diagnosing your condition…”
+
+10. Accessibility Requirements
+
+The website must be accessible and readable.
+
+Requirements:
+- High contrast between text and background.
+- All form fields must have visible labels.
+- Buttons must be easy to click.
+- Text must not be too small.
+- Do not rely only on colour to show urgency.
+- Use text labels such as Low, Moderate, and Urgent.
+- Use semantic headings where possible.
+- Mobile layout must remain readable.
+- Red warning sections must include text explanation, not just colour.
+
+11. Mobile Responsiveness
+
+The website must work well on:
+- desktop
+- tablet
+- mobile
+
+Mobile requirements:
+- navigation should collapse or stack cleanly
+- cards should stack vertically
+- form fields should be full-width
+- buttons should be easy to tap
+- text should remain readable
+- emergency warnings should remain visible
+
+12. Trust-Building UI Elements
+
+Include visible trust-building elements:
+- “AI-assisted guidance”
+- “Not a diagnosis”
+- “Human consultation recommended”
+- “Privacy-aware prototype”
+- “Trusted-source placeholders”
+- “Prototype doctor-review indicator”
+
+Important:
+Do not claim real doctor review unless clearly marked as a prototype feature.
+Use wording such as:
+“Doctor-review placeholder for prototype”
+or
+“Designed for future medical review”
+
+Avoid:
+“Doctor-approved diagnosis”
+“Clinically certified”
+“Guaranteed accurate”
+
+13. Ethical Design Requirements
+
+The design should support ethical AI use by making limitations visible.
+
+Required ethical UI features:
+- Disclaimer banner on Home page
+- AI limitation notice on Symptom Checker and Results pages
+- Privacy notice near symptom form
+- Human consultation CTA on Results page
+- Emergency warning for red flags
+- Trusted-source transparency page
+- No hidden safety text
+
+14. Visual Consistency Rules
+
+Use consistent:
+- colours
+- card style
+- button style
+- spacing
+- heading style
+- icon style
+- disclaimer styling
+- urgency badge styling
+
+Do not change the design style drastically between pages.
+
+15. Design Completion Criteria
+
+The UI/UX design is successful when:
+- the website looks professional and healthcare-related,
+- the design is consistent across all pages,
+- users can easily understand what to do next,
+- safety warnings are visible,
+- the tone is calm and credible,
+- the website avoids unnecessary fear,
+- trust-building features are visible,
+- the site works on mobile and desktop,
+- the interface supports the message that AI assists but does not replace doctors.

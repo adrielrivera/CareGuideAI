@@ -1,0 +1,327 @@
+Document 5: Backend Schema / Data Handling Plan
+
+Project Name:
+CareGuide AI
+
+Purpose of this Document:
+This document defines how CareGuide AI handles user input, simulated symptom data, privacy, and safety. Although a real backend is not required for this school prototype, this plan is included to prevent unsafe assumptions about storing personal or health-related information.
+
+CareGuide AI should be treated as a frontend-only educational prototype. It should simulate a symptom guidance flow without collecting, storing, uploading, or sharing real patient data.
+
+1. Backend Decision
+
+Backend Requirement:
+No real backend is required.
+
+Reason:
+This website is a prototype for an AI & Ethics assignment, not a real healthcare platform. Since users may enter symptom-related information, storing data would create unnecessary privacy risks.
+
+The website should:
+- collect temporary inputs only in the browser during the current session,
+- use simple frontend logic to generate simulated urgency guidance,
+- clear or reset inputs when the user starts over,
+- avoid login, accounts, patient records, or saved history.
+
+The website should not:
+- connect to a real database,
+- send symptom information to a server,
+- call a real medical API,
+- call an external AI API,
+- store symptom information in localStorage or sessionStorage,
+- create patient profiles,
+- store consultation history,
+- claim secure medical record handling.
+
+2. Data Storage Rule
+
+Storage Method:
+React component state only.
+
+Allowed:
+- Temporary state while the user is on the page.
+- Mock data for demonstration.
+- Static placeholder source cards.
+- Static red-flag symptom list.
+
+Not Allowed:
+- Database storage.
+- Browser localStorage.
+- Browser sessionStorage.
+- Cookies for health information.
+- Server submission.
+- Real API calls.
+- User accounts.
+- Saved symptom history.
+
+Privacy Principle:
+The safest design for this prototype is data minimisation. Only the minimum information needed to simulate the guidance flow should be requested.
+
+3. Simulated Data Objects
+
+The following objects are only conceptual frontend state structures. They should not be stored permanently.
+
+Object 1: SymptomInput
+
+Fields:
+- ageRange: string
+- mainSymptom: string
+- duration: string
+- severityLevel: number
+- redFlags: array of strings
+- additionalNotes: string
+
+Purpose:
+Stores temporary symptom form input while the user is interacting with the prototype.
+
+Example:
+{
+  ageRange: "13-21",
+  mainSymptom: "Headache and mild fever",
+  duration: "1-3 days",
+  severityLevel: 3,
+  redFlags: [],
+  additionalNotes: "Feeling tired"
+}
+
+Privacy Note:
+This object must exist only in frontend state. It must not be saved, uploaded, or shared.
+
+Object 2: UrgencyResult
+
+Fields:
+- urgencyLevel: "Low" | "Moderate" | "Urgent"
+- title: string
+- explanation: string
+- nextSteps: array of strings
+- disclaimer: string
+- showEmergencyWarning: boolean
+- recommendHumanConsultation: boolean
+
+Purpose:
+Stores the simulated result shown to the user after the symptom checker form is submitted.
+
+Example:
+{
+  urgencyLevel: "Moderate",
+  title: "Consider seeking medical advice",
+  explanation: "Your symptoms may require professional review, especially if they persist or worsen.",
+  nextSteps: [
+    "Monitor symptoms carefully",
+    "Consider consulting a healthcare professional",
+    "Seek urgent help if red-flag symptoms appear"
+  ],
+  disclaimer: "This is not a diagnosis.",
+  showEmergencyWarning: false,
+  recommendHumanConsultation: true
+}
+
+Object 3: RedFlagSymptom
+
+Fields:
+- id: string
+- label: string
+- description: string
+- urgencyMessage: string
+
+Purpose:
+Defines red-flag symptoms used in the checklist and Emergency Red Flags page.
+
+Example:
+{
+  id: "breathing-difficulty",
+  label: "Severe breathing difficulty",
+  description: "Difficulty breathing may require urgent medical attention.",
+  urgencyMessage: "Seek urgent medical help if breathing difficulty is severe."
+}
+
+Object 4: TrustedSourcePlaceholder
+
+Fields:
+- title: string
+- category: string
+- description: string
+- note: string
+
+Purpose:
+Displays placeholder source cards to show that a real deployment would require verified medical sources and professional review.
+
+Example:
+{
+  title: "Public Health Guidance",
+  category: "Trusted Source Placeholder",
+  description: "A real version should compare guidance against recognised public health resources.",
+  note: "Placeholder only — not a live medical reference."
+}
+
+4. Simulated Urgency Logic
+
+The website should use simple rule-based frontend logic. It should not claim to use real AI diagnosis.
+
+Urgent Result:
+Triggered when:
+- user selects any red-flag symptom.
+
+Displayed message should:
+- clearly state that red-flag symptoms may require urgent medical attention,
+- advise users to seek urgent medical help,
+- avoid diagnosing the cause,
+- avoid recommending medication.
+
+Moderate Result:
+Triggered when:
+- severityLevel is 4 or 5, or
+- duration is more than 1 week, or
+- user expresses concern in additional notes, if simple keyword detection is used.
+
+Displayed message should:
+- suggest considering professional medical advice,
+- encourage monitoring symptoms,
+- remind users this is not a diagnosis,
+- avoid medication recommendations.
+
+Low Result:
+Triggered when:
+- severityLevel is 1 to 3,
+- duration is short,
+- no red flags are selected.
+
+Displayed message should:
+- suggest monitoring symptoms,
+- advise seeking help if symptoms persist or worsen,
+- remind users this is not a diagnosis,
+- avoid saying “you are safe.”
+
+5. Personal Information Boundaries
+
+The form may ask for:
+- age range,
+- general symptoms,
+- duration,
+- severity,
+- red-flag symptoms,
+- optional notes.
+
+The form must not ask for:
+- full name,
+- NRIC or identification number,
+- home address,
+- phone number,
+- email address,
+- exact date of birth,
+- medical record number,
+- insurance details,
+- payment details,
+- photos of symptoms,
+- medication history,
+- family medical history,
+- sensitive diagnosis history.
+
+Reason:
+These details are unnecessary for a school prototype and could increase privacy risk.
+
+6. Privacy Notice Requirements
+
+A privacy notice should appear:
+- before the symptom checker form,
+- on the Privacy & AI Limitations page,
+- near the urgency result if appropriate.
+
+Recommended privacy notice wording:
+“This prototype does not store, upload, or share your symptom information. Inputs are used only temporarily to simulate guidance on this page. Please do not enter highly sensitive personal details.”
+
+Short version for form:
+“Privacy reminder: Do not enter identifying or highly sensitive details. This prototype does not store your responses.”
+
+7. AI Limitation Notice Requirements
+
+An AI limitation notice should appear:
+- on the Home page,
+- on the Symptom Checker page,
+- on the Urgency Results page,
+- on the Privacy & AI Limitations page.
+
+Recommended wording:
+“CareGuide AI provides simulated guidance for educational purposes. It is not a diagnosis and does not replace a qualified healthcare professional.”
+
+Additional wording for Results page:
+“This result is based on simple prototype logic and should not be treated as medical advice.”
+
+8. Human Oversight Requirements
+
+The website must include human consultation reminders.
+
+Human consultation reminder should appear:
+- after every urgency result,
+- on the Human Consultation page,
+- in the footer or disclaimer where appropriate.
+
+Recommended wording:
+“If symptoms persist, worsen, or concern you, seek advice from a qualified healthcare professional.”
+
+For urgent results:
+“If you are experiencing severe or life-threatening symptoms, seek urgent medical help immediately.”
+
+9. Security Requirements
+
+Because there is no backend, the security approach is to avoid collecting or storing sensitive data in the first place.
+
+Security principles:
+- data minimisation,
+- no persistent storage,
+- no authentication,
+- no medical database,
+- no API calls with symptom data,
+- no tracking of health inputs.
+
+The website should not pretend to provide secure medical storage.
+
+Avoid wording such as:
+- “Your medical records are securely stored”
+- “Your diagnosis history is saved”
+- “Your doctor can access your record”
+- “Your information is encrypted in our database”
+
+Instead use:
+- “This prototype does not store personal health data”
+- “No real patient record is created”
+- “Inputs are used temporarily for demonstration only”
+
+10. Ethical Risks and Mitigations
+
+Risk 1: False diagnosis
+Mitigation:
+Do not display diagnosis labels. Display urgency levels only.
+
+Risk 2: Unsafe medication advice
+Mitigation:
+Do not recommend specific drugs. Use general non-prescriptive advice and encourage medical consultation.
+
+Risk 3: False reassurance
+Mitigation:
+Avoid saying “you are safe” or “this is not serious.” Use cautious wording and advise seeking help if symptoms persist or worsen.
+
+Risk 4: Privacy leakage
+Mitigation:
+Do not collect identifying information and do not store health inputs.
+
+Risk 5: Overreliance on AI
+Mitigation:
+Display AI limitation notices and human consultation reminders.
+
+Risk 6: Fake credibility
+Mitigation:
+Do not claim real doctor approval. Use “prototype doctor-review indicator” if needed.
+
+11. Data Handling Completion Criteria
+
+The data handling plan is successful when:
+- no real backend is implemented,
+- no database is used,
+- no user input is stored permanently,
+- symptom inputs remain temporary,
+- the website includes privacy notices,
+- the website includes AI limitation notices,
+- the website avoids diagnosis and medication advice,
+- the website encourages human medical consultation,
+- red-flag symptoms trigger urgent guidance,
+- all medical-related outputs are cautious and non-definitive.

@@ -1,0 +1,363 @@
+Document 6: Implementation Plan — Step-by-Step Build Sequence
+
+Project Name:
+CareGuide AI
+
+Purpose of this Implementation Plan:
+This document defines the build sequence for the CareGuide AI website prototype. It ensures that Codex builds the project in a structured and safe order, beginning with the foundation, then pages, then symptom checker logic, then ethical safeguards, then testing and polish.
+
+The final website should demonstrate responsible AI-assisted healthcare guidance, not real diagnosis or medical treatment.
+
+1. Build Philosophy
+
+CareGuide AI should be built as a safe, frontend-only educational prototype.
+
+The build should prioritise:
+- clear user flow,
+- professional healthcare design,
+- safe urgency-based guidance,
+- privacy protection,
+- visible AI limitations,
+- human consultation reminders,
+- ethical wording,
+- responsive layout,
+- clean code.
+
+The build should not prioritise:
+- real medical diagnosis,
+- real medication recommendation,
+- real backend storage,
+- user accounts,
+- saved medical history,
+- real doctor booking,
+- real AI API integration.
+
+2. Phase 1 — Project Setup
+
+Goal:
+Create the basic React project structure and install required tools.
+
+Tasks:
+1. Set up a React + Vite project.
+2. Install Tailwind CSS.
+3. Configure Tailwind.
+4. Set up the main file structure.
+5. Create base layout files.
+6. Confirm the app runs locally.
+
+Suggested structure:
+
+src/
+  App.jsx
+  main.jsx
+  index.css
+  components/
+  pages/
+  data/
+  utils/
+
+Done Criteria:
+- React app runs without errors.
+- Tailwind styles are working.
+- Basic project folders exist.
+- App displays a temporary homepage.
+
+3. Phase 2 — Global Layout and Navigation
+
+Goal:
+Create the shared layout that will be used across the website.
+
+Tasks:
+1. Create Header component.
+2. Create Footer component.
+3. Create DisclaimerBanner component.
+4. Create responsive navigation.
+5. Add main navigation links:
+   - Home
+   - Symptom Checker
+   - Emergency Red Flags
+   - Human Consultation
+   - Trusted Sources
+   - Privacy & AI Limitations
+6. Add consistent page container spacing.
+
+Done Criteria:
+- Header appears on all pages.
+- Footer appears on all pages.
+- Navigation works.
+- Layout is responsive.
+- A visible disclaimer or AI limitation message appears in the layout or key pages.
+
+4. Phase 3 — Static Content Pages
+
+Goal:
+Build the non-form pages first so the website has a complete structure before adding logic.
+
+Pages to build:
+1. Home
+2. Emergency Red Flags
+3. Human Consultation
+4. Trusted Sources
+5. Privacy & AI Limitations
+
+Tasks:
+1. Build Home page with hero section, tagline, CTA, trust cards, and disclaimer.
+2. Build Emergency Red Flags page with red-flag symptom cards.
+3. Build Human Consultation page with mock consultation CTA and professional-care reminder.
+4. Build Trusted Sources page with placeholder source cards.
+5. Build Privacy & AI Limitations page with privacy and AI safety information.
+
+Done Criteria:
+- All static pages exist.
+- All pages follow the same visual style.
+- All pages include safe, cautious wording.
+- No page claims real diagnosis, real doctor approval, or guaranteed accuracy.
+- Navigation between pages works.
+
+5. Phase 4 — Symptom Checker Form
+
+Goal:
+Build the symptom checker form as a safe mock input experience.
+
+Tasks:
+1. Create SymptomChecker page.
+2. Add privacy reminder before the form.
+3. Add required form fields:
+   - Age range
+   - Main symptom description
+   - Symptom duration
+   - Severity level
+   - Red-flag symptoms checklist
+4. Add optional field:
+   - Additional notes
+5. Use controlled React state.
+6. Add simple validation.
+7. Prevent form submission when required fields are empty.
+8. Do not collect full name, NRIC, phone number, address, email, or other identifying information.
+
+Done Criteria:
+- User can complete the form.
+- Required fields are validated.
+- No unnecessary personal information is requested.
+- Input stays temporarily in React state only.
+- No data is stored or sent to a server.
+
+6. Phase 5 — Simulated Urgency Logic
+
+Goal:
+Create frontend-only logic that converts form input into urgency-based guidance.
+
+Tasks:
+1. Create utility function such as `getUrgencyResult()`.
+2. Define Low, Moderate, and Urgent result types.
+3. Trigger Urgent result if any red-flag symptom is selected.
+4. Trigger Moderate result if severity is high or symptoms last longer.
+5. Trigger Low result if severity is low, duration is short, and no red flags are selected.
+6. Ensure every result includes:
+   - urgency level,
+   - explanation,
+   - next steps,
+   - disclaimer,
+   - human consultation reminder.
+7. Ensure no result includes:
+   - disease diagnosis,
+   - medication recommendation,
+   - certainty statement,
+   - false reassurance.
+
+Done Criteria:
+- Low result works.
+- Moderate result works.
+- Urgent result works.
+- Red-flag symptoms override other logic.
+- All results are urgency-based, not diagnosis-based.
+
+7. Phase 6 — Urgency Results Page
+
+Goal:
+Display the simulated urgency result clearly and safely.
+
+Tasks:
+1. Create Urgency Results page or result section.
+2. Display the urgency level using a clear card.
+3. Include “This is not a diagnosis” notice.
+4. Include general next steps.
+5. Include human consultation call-to-action.
+6. Include emergency warning if result is urgent.
+7. Include Start Over button.
+8. Include link to Emergency Red Flags page.
+9. Include link to Privacy & AI Limitations page.
+
+Done Criteria:
+- Result page displays correctly after form submission.
+- Result page does not diagnose.
+- Result page does not recommend medication.
+- Result page does not say “you are safe.”
+- Result page directs users to professional help where appropriate.
+
+8. Phase 7 — Ethical Safeguards and Content Review
+
+Goal:
+Review the website content for unsafe AI-generated wording and revise it.
+
+Tasks:
+1. Search all website text for diagnosis-like wording.
+2. Remove phrases such as:
+   - “You have…”
+   - “You definitely…”
+   - “Take this medication…”
+   - “You are safe…”
+   - “Doctor-approved diagnosis…”
+3. Add safer phrasing:
+   - “This is not a diagnosis.”
+   - “Your symptoms may have several possible causes.”
+   - “Seek medical advice if symptoms persist or worsen.”
+   - “If red-flag symptoms are present, seek urgent medical help.”
+4. Add AI limitation notices.
+5. Add privacy reminders.
+6. Add human consultation reminders.
+7. Add prototype-only labels where needed.
+
+Done Criteria:
+- Unsafe wording is removed.
+- Human oversight is visible.
+- AI limitations are visible.
+- Privacy warnings are visible.
+- The website clearly supports, not replaces, professional care.
+
+9. Phase 8 — UI Polish and Consistency
+
+Goal:
+Improve visual quality so the website looks polished and professional.
+
+Tasks:
+1. Apply consistent colour palette.
+2. Improve spacing and layout.
+3. Style cards consistently.
+4. Style buttons consistently.
+5. Add suitable icons if available.
+6. Improve heading hierarchy.
+7. Make warnings visually clear but not overly frightening.
+8. Ensure all pages feel like part of the same product.
+9. Improve mobile responsiveness.
+
+Done Criteria:
+- Website has consistent visual design across all pages.
+- Website looks professional and healthcare-related.
+- UI is not cluttered.
+- Text is easy to read.
+- Buttons and navigation are easy to use.
+- Website works on mobile and desktop.
+
+10. Phase 9 — Accessibility Review
+
+Goal:
+Ensure the prototype is readable and usable.
+
+Tasks:
+1. Check text contrast.
+2. Check form labels.
+3. Check button sizes.
+4. Check mobile layout.
+5. Ensure urgency is not shown by colour alone.
+6. Ensure disclaimers are visible and readable.
+7. Ensure error messages are clear.
+
+Done Criteria:
+- Inputs have labels.
+- Text is readable.
+- Buttons are easy to click.
+- Urgency cards include both colour and text.
+- Website remains usable on smaller screens.
+
+11. Phase 10 — Testing
+
+Goal:
+Test the full website flow and record useful evidence for the report.
+
+Test Case 1: Mild symptoms
+Input:
+- severity 2
+- short duration
+- no red flags
+
+Expected:
+Low urgency result with monitoring advice and human consultation reminder.
+
+Test Case 2: High severity
+Input:
+- severity 5
+- no red flags
+
+Expected:
+Moderate guidance suggesting professional medical advice.
+
+Test Case 3: Red-flag symptom
+Input:
+- chest pain or severe breathing difficulty selected
+
+Expected:
+Urgent result and emergency guidance.
+
+Test Case 4: Empty form
+Input:
+- required fields missing
+
+Expected:
+Validation message asking user to complete required fields.
+
+Test Case 5: Mobile view
+Expected:
+Layout remains readable and usable.
+
+Done Criteria:
+- All test cases work.
+- No unsafe diagnosis or medication wording appears.
+- Screenshots can be taken for report evidence.
+
+12. Phase 11 — Report Evidence Collection
+
+Goal:
+Collect screenshots and notes needed for the Diagnostic Log, Synthesis Protocol, and Mindful Creator Audit.
+
+Required evidence:
+1. Screenshot of zero-shot prompt.
+2. Screenshot of zero-shot output.
+3. Screenshot of P.T.C.F. prompt with project documents.
+4. Screenshot of improved Codex output.
+5. Screenshot of refinement prompt.
+6. Screenshot of final website pages.
+7. Before-and-after examples of human override.
+8. Annotated screenshots for Mindful Creator Audit.
+9. Screenshot of Urgency Results page for Synthesis Protocol.
+10. Screenshot of Privacy & AI Limitations page.
+
+Done Criteria:
+- Evidence is collected before and after refinement.
+- Human override examples are clearly documented.
+- Final website screenshots are ready for report and presentation.
+
+13. Phase 12 — Final Review
+
+Goal:
+Ensure the website meets the assignment requirements and ethical expectations.
+
+Final checklist:
+- Website uses the selected scenario.
+- Website is complete and visually consistent.
+- Website was generated using Codex through structured prompting.
+- P.T.C.F. prompt was used.
+- 4 C’s refinement was used.
+- Prompt evolution was documented.
+- Human override was performed.
+- Mindful Creator Audit was completed.
+- Website does not provide definitive diagnosis.
+- Website does not recommend medication.
+- Website does not store health data.
+- Website includes human consultation.
+- Website includes privacy and AI limitation notices.
+- Website includes emergency red-flag guidance.
+- Website supports the group research findings.
+
+Final Done Criteria:
+The website is ready when it is functional, professional, safe, ethically explainable, and supported by report evidence.

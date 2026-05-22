@@ -1,0 +1,426 @@
+Document 3: App Flow — Navigation & User Journey Map
+
+Project Name:
+CareGuide AI
+
+Purpose of this App Flow:
+This document defines how users move through the CareGuide AI website prototype. It ensures that the website is built as one coherent experience rather than separate disconnected pages.
+
+The flow should reflect the project’s main goal: helping students and young adults move from uncertainty about symptoms toward clearer, safer next steps, while preserving human medical oversight.
+
+1. Main Navigation Structure
+
+Navigation Type:
+Use a top navigation bar for desktop.
+Use a responsive stacked menu or mobile-friendly navigation for smaller screens.
+
+Main Navigation Links:
+- Home
+- Symptom Checker
+- Emergency Red Flags
+- Human Consultation
+- Trusted Sources
+- Privacy & AI Limitations
+
+Optional:
+The Urgency Results page does not need to be in the main navigation because it appears after users submit the symptom checker form.
+
+Primary Call-to-Action:
+“Start Symptom Check”
+
+Secondary Call-to-Action:
+“View Emergency Red Flags”
+
+Footer Links:
+- Privacy & AI Limitations
+- Trusted Sources
+- Human Consultation
+- Emergency Red Flags
+
+2. Page List and Purpose
+
+Page 1: Home
+
+Route:
+/ or /home
+
+Purpose:
+Introduce CareGuide AI and explain that it is an AI-assisted healthcare guidance prototype, not a doctor or diagnosis system.
+
+User should see:
+- Website name: CareGuide AI
+- Tagline: Clearer symptom guidance. Safer next steps.
+- Short explanation of the platform
+- Visible disclaimer
+- Primary CTA: Start Symptom Check
+- Secondary CTA: Learn About Red Flags
+- Trust-building cards:
+  - Urgency-based guidance
+  - Human consultation encouraged
+  - Privacy-aware prototype
+  - Trusted-source transparency
+
+User action:
+Click “Start Symptom Check” → go to Symptom Checker page.
+Click “Learn About Red Flags” → go to Emergency Red Flags page.
+
+Page 2: Symptom Checker
+
+Route:
+/symptom-checker
+
+Purpose:
+Allow users to enter mock symptom information and receive simulated urgency guidance.
+
+User should see:
+- Privacy reminder before the form
+- Disclaimer: “This is not a diagnosis.”
+- Form fields:
+  - Age range
+  - Main symptom description
+  - Duration
+  - Severity level
+  - Red-flag symptoms checklist
+  - Additional notes
+- Submit button: “View Guidance”
+
+User action:
+Complete form → click “View Guidance” → go to Urgency Results page.
+
+Validation:
+If required fields are empty, show a calm validation message.
+Example:
+“Please describe your symptoms and select a severity level before continuing.”
+
+Safety:
+The form must not ask for full name, NRIC, address, phone number, exact medical records, or other unnecessary personal identifiers.
+
+Page 3: Urgency Results
+
+Route:
+/results
+
+Purpose:
+Display simulated urgency-based guidance based on the user’s inputs.
+
+User should see:
+- Urgency level: Low, Moderate, or Urgent
+- Explanation of why this urgency level was shown
+- Clear statement: “This is not a diagnosis.”
+- General next steps
+- Human consultation reminder
+- Emergency warning if red flags were selected
+- Buttons:
+  - “Consult a Human Doctor”
+  - “View Red Flags”
+  - “Start Over”
+
+Result logic:
+Low:
+Shown when severity is low, duration is short, and no red flags are selected.
+
+Moderate:
+Shown when severity is high, symptoms last longer, or the user feels concerned, but no red flags are selected.
+
+Urgent:
+Shown when any red-flag symptom is selected.
+
+Important:
+The result page must not display:
+- a disease diagnosis
+- medication recommendation
+- certainty statements
+- phrases like “you are safe” or “you definitely have”
+
+Page 4: Emergency Red Flags
+
+Route:
+/emergency-red-flags
+
+Purpose:
+Educate users about symptoms that may require urgent medical attention.
+
+User should see:
+- Calm but direct heading
+- Red-flag symptom cards:
+  - Chest pain
+  - Severe breathing difficulty
+  - Fainting
+  - Confusion
+  - Severe allergic reaction
+  - Uncontrolled bleeding
+  - Sudden weakness or numbness
+  - Severe dehydration
+- Emergency guidance:
+  “If you are experiencing severe or life-threatening symptoms, seek urgent medical help immediately.”
+
+User action:
+Click “Start Symptom Check” → go to Symptom Checker.
+Click “Human Consultation” → go to Human Consultation.
+
+Page 5: Human Consultation
+
+Route:
+/human-consultation
+
+Purpose:
+Reinforce that AI-assisted guidance should not replace human medical judgement.
+
+User should see:
+- Explanation of why human consultation matters
+- Mock consultation call-to-action
+- Reminder:
+  “This prototype does not book real appointments.”
+- Suggested situations to seek medical advice:
+  - symptoms persist
+  - symptoms worsen
+  - user is worried
+  - red-flag symptoms appear
+  - symptoms affect daily activities
+
+User action:
+Click “Return to Symptom Checker”
+Click “View Trusted Sources”
+
+Page 6: Trusted Sources
+
+Route:
+/trusted-sources
+
+Purpose:
+Build trust by showing that healthcare guidance should be grounded in credible sources.
+
+User should see:
+- Explanation of why trusted sources matter
+- Placeholder source cards
+- Clear note:
+  “In a real deployment, all medical information should be reviewed against verified healthcare sources and qualified medical professionals.”
+- Avoid fabricated detailed medical claims.
+
+Possible placeholder source cards:
+- Public health agency guidance
+- Hospital or clinic-reviewed content
+- Medical professional review process
+- Emergency care guidelines
+
+User action:
+Click “Privacy & AI Limitations”
+Click “Start Symptom Check”
+
+Page 7: Privacy & AI Limitations
+
+Route:
+/privacy-ai-limitations
+
+Purpose:
+Explain how the prototype handles data and why AI output must be treated carefully.
+
+User should see:
+- No real data storage statement
+- Explanation that all symptom input is simulated
+- Warning not to enter sensitive personal details
+- AI limitation explanation
+- Reminder that AI can be wrong
+- Human verification reminder
+- Emergency disclaimer
+
+User action:
+Click “Start Symptom Check”
+Click “Human Consultation”
+
+3. Main User Journey
+
+Journey Name:
+Uncertain Symptom Guidance Journey
+
+Step 1:
+User lands on Home page.
+
+User goal:
+Understand what CareGuide AI does and whether it is safe to use.
+
+System response:
+The website explains that it provides AI-assisted urgency guidance, not diagnosis.
+
+Step 2:
+User clicks “Start Symptom Check.”
+
+System response:
+User is taken to Symptom Checker page.
+
+Step 3:
+User reads privacy and AI limitation reminder.
+
+System response:
+The website reminds users not to enter highly sensitive information and states that this is not a diagnosis.
+
+Step 4:
+User fills in symptom information.
+
+System response:
+The form records input temporarily in React state only.
+
+Step 5:
+User submits form.
+
+System response:
+The website generates a simulated urgency result.
+
+Step 6:
+User sees urgency result.
+
+System response:
+The website displays Low, Moderate, or Urgent guidance with next steps.
+
+Step 7:
+User is directed to appropriate next action.
+
+Possible next actions:
+- Low: monitor symptoms and seek help if they persist or worsen
+- Moderate: consider seeing a doctor soon
+- Urgent: seek urgent medical help
+- Any result: consult a human doctor if worried
+
+Step 8:
+User may visit Trusted Sources or Privacy & AI Limitations page.
+
+System response:
+The website reinforces credibility, transparency, and human oversight.
+
+4. Alternative Journey: Emergency Red-Flag User
+
+Step 1:
+User selects red-flag symptom such as chest pain or severe breathing difficulty.
+
+Step 2:
+User submits symptom checker.
+
+Step 3:
+Urgency Results page shows “Urgent” result.
+
+Step 4:
+Website displays red warning banner:
+“Red-flag symptoms may require urgent medical attention.”
+
+Step 5:
+Website does not diagnose the user.
+Website does not recommend medication.
+Website directs user toward urgent medical care.
+
+5. Alternative Journey: User Leaves Form Blank
+
+Step 1:
+User opens Symptom Checker page.
+
+Step 2:
+User clicks “View Guidance” without filling required fields.
+
+Step 3:
+Website shows validation message:
+“Please complete the required symptom description and severity level before continuing.”
+
+Step 4:
+User remains on Symptom Checker page.
+
+6. Alternative Journey: User Wants to Understand AI Limits
+
+Step 1:
+User clicks “Privacy & AI Limitations.”
+
+Step 2:
+Website explains:
+- prototype does not store data
+- AI may be inaccurate
+- results are simulated
+- guidance is not medical diagnosis
+- human consultation is recommended
+
+Step 3:
+User can return to Symptom Checker or Human Consultation.
+
+7. Empty States
+
+Symptom Description Empty:
+Show:
+“Please briefly describe what you are experiencing.”
+
+Severity Empty:
+Show:
+“Please select a severity level.”
+
+No Red Flags Selected:
+Treat as normal. User may continue.
+
+No Additional Notes:
+Allowed.
+
+8. Error States
+
+Invalid Form Submission:
+Show a gentle validation message, not a harsh error.
+
+Unexpected Result State:
+Show:
+“We could not generate guidance from the current input. Please review your information or seek professional advice if you are concerned.”
+
+9. Loading State
+
+If a loading state is used, show:
+“Preparing your guidance…”
+
+Do not imply real AI diagnosis is occurring.
+
+Avoid:
+“Diagnosing your condition…”
+“Analysing your disease…”
+
+10. Redirect Logic
+
+Home:
+Start Symptom Check → /symptom-checker
+Learn About Red Flags → /emergency-red-flags
+
+Symptom Checker:
+Valid submit → /results
+Invalid submit → stay on /symptom-checker with validation message
+
+Urgency Results:
+Consult Human Doctor → /human-consultation
+View Red Flags → /emergency-red-flags
+Start Over → /symptom-checker
+
+Emergency Red Flags:
+Start Symptom Check → /symptom-checker
+Human Consultation → /human-consultation
+
+Trusted Sources:
+Privacy & AI Limitations → /privacy-ai-limitations
+Start Symptom Check → /symptom-checker
+
+Privacy & AI Limitations:
+Human Consultation → /human-consultation
+Start Symptom Check → /symptom-checker
+
+11. Safety Rules Across the App Flow
+
+Across all pages:
+- Display the platform as AI-assisted guidance, not an AI doctor.
+- Do not claim to diagnose.
+- Do not recommend specific medications.
+- Do not claim real doctor approval.
+- Do not store user health data.
+- Do not use alarmist language unnecessarily.
+- Always include a path to human medical advice.
+- Keep emergency guidance direct and visible.
+
+12. App Flow Completion Criteria
+
+The App Flow is successful when:
+- Users can clearly understand the website purpose from the Home page.
+- Users can complete the symptom checker journey.
+- Users can receive urgency-based guidance.
+- Red-flag symptoms trigger urgent guidance.
+- Users are repeatedly reminded that the result is not a diagnosis.
+- Users can access human consultation and trusted-source pages.
+- Users can understand privacy and AI limitations.
+- Navigation is coherent and consistent.

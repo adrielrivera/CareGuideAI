@@ -1,0 +1,146 @@
+Document 1: Product Requirements Document (PRD)
+
+Project Name:
+CareGuide AI
+
+Tagline:
+Clearer symptom guidance. Safer next steps.
+
+Assignment Scenario:
+Scenario B: Automated Patient Triage & Symptom Checker Web Clinic.
+
+Reframed Product Direction:
+CareGuide AI is an AI-assisted healthcare guidance website for students and young adults who search symptoms online when feeling unwell. The website helps users organise their symptoms, understand possible urgency levels, recognise red-flag symptoms, and seek human medical help when necessary.
+
+The website should not be designed as an “AI doctor.” It should support decision-making while clearly reminding users that AI-generated guidance is not a substitute for professional medical advice.
+
+Problem Being Solved:
+Young adults often search symptoms online as a first response when they feel unwell. However, online symptom searches can create confusion and anxiety because users face conflicting information, scary worst-case results, and uncertainty about whether they should seek medical attention.
+
+This problem was supported by the group survey:
+- 54.5% of respondents said they search symptoms online very often.
+- 54.5% said searching symptoms online is their first action when feeling unwell.
+- 63.6% were frustrated by conflicting information.
+- 63.6% were frustrated by scary worst-case results.
+- 77.3% have experienced uncertainty about whether symptoms required medical attention.
+- 77.3% said knowing when to see a doctor would help them most.
+- 77.3% said professional medical design and trusted sources would increase website trust.
+- 72.7% said a doctor-reviewed badge and human consultation option would increase trust.
+
+Target Users:
+The primary users are students and young adults, especially those aged 13–21, who may not have strong medical knowledge and may feel uncertain when searching symptoms online. They want quick, clear, and trustworthy guidance, but they still need reassurance that a human medical professional remains involved when necessary.
+
+User Needs:
+1. Users need health information that is clear and not overwhelming.
+2. Users need guidance on whether symptoms may require medical attention.
+3. Users need emergency warning signs to be clearly visible.
+4. Users need reassurance without being given false certainty.
+5. Users need trusted references and transparency about AI limitations.
+6. Users need human consultation options so they do not rely only on AI.
+7. Users need privacy reassurance because health-related information is sensitive.
+
+Core Value Proposition:
+CareGuide AI provides a safer alternative to random online symptom searches by giving structured, calm, and urgency-based healthcare guidance. It does not provide final diagnoses or direct medication prescriptions. Instead, it helps users understand next steps, identify red-flag symptoms, and seek professional help when needed.
+
+Must-Have Features:
+1. Home Page
+   - Clear explanation of CareGuide AI.
+   - Main call-to-action: “Start Symptom Check.”
+   - Visible disclaimer that the website does not replace doctors.
+   - Short explanation of how the platform works.
+
+2. Symptom Checker Page
+   - Form for users to enter basic information.
+   - Age range field.
+   - Symptom description field.
+   - Duration field.
+   - Severity scale.
+   - Red-flag symptom checklist.
+   - Clear privacy reminder before submission.
+
+3. Urgency Results Page
+   - Shows one of three urgency levels: Low, Moderate, or Urgent.
+   - Gives general next-step guidance.
+   - Avoids definitive diagnosis.
+   - Avoids direct medication recommendation.
+   - Includes human consultation reminder.
+   - Includes emergency warning if red flags are selected.
+
+4. Emergency Red Flags Page
+   - Lists symptoms that may require urgent medical help.
+   - Uses clear, direct language.
+   - Does not cause unnecessary panic.
+   - Encourages immediate medical attention for severe red-flag symptoms.
+
+5. Human Consultation Page
+   - Encourages users to consult a qualified healthcare professional.
+   - Includes a mock consultation call-to-action.
+   - Makes clear that the booking feature is a prototype.
+
+6. Trusted Sources Page
+   - Explains that real-world health guidance should be based on trusted medical sources.
+   - Uses placeholder reference cards if exact sources are not verified.
+   - Does not fabricate specific medical claims.
+
+7. Privacy & AI Limitations Page
+   - Explains that the prototype does not store real personal or health data.
+   - Warns users not to enter sensitive personal information.
+   - Explains that AI can make mistakes.
+   - States that AI guidance should be verified by humans.
+   - Reinforces that doctors remain responsible for medical decisions.
+
+Nice-to-Have Features:
+1. Simple progress indicator for symptom checker.
+2. Downloadable mock summary for doctor consultation.
+3. FAQ section.
+4. Mobile-friendly bottom navigation.
+5. Visual trust badges such as “AI-assisted,” “Human review recommended,” and “Prototype only.”
+6. Smooth scroll or simple animations, if they do not distract from clarity.
+
+Out of Scope:
+1. No real diagnosis.
+2. No direct medication prescription.
+3. No real medical triage decision.
+4. No real doctor appointment booking.
+5. No real patient data storage.
+6. No login or user account system.
+7. No real backend database.
+8. No claim that the website is medically approved.
+9. No claim that AI output is always accurate.
+10. No emergency service replacement.
+
+Ethical Boundaries:
+1. The website must not present AI-generated output as final medical truth.
+2. The website must avoid overconfident language such as “You have…” or “You are safe.”
+3. The website must avoid specific drug recommendations.
+4. The website must clearly advise human medical consultation when needed.
+5. The website must include red-flag warnings for urgent symptoms.
+6. The website must include privacy notices.
+7. The website must be careful with trust badges so they do not imply real doctor approval unless clearly marked as prototype features.
+
+User Stories:
+1. As a young adult feeling unwell, I want to describe my symptoms so that I can understand whether I may need medical attention.
+2. As a user, I want clear urgency guidance so that I can decide whether to monitor symptoms, see a doctor, or seek urgent help.
+3. As a user, I want red-flag symptoms to be highlighted so that I know when a situation may be serious.
+4. As a user, I want calm and professional language so that I do not become more anxious.
+5. As a user, I want trusted-source references so that I can feel more confident in the guidance.
+6. As a user, I want human consultation options so that I am reminded not to rely only on AI.
+7. As a user, I want privacy information so that I know my health information is not being stored in this prototype.
+
+Success Criteria:
+1. The website has a complete and consistent design across all pages.
+2. Users can navigate from Home to Symptom Checker to Urgency Results.
+3. The symptom checker produces simulated urgency-based results.
+4. The website avoids definitive diagnosis and direct drug recommendations.
+5. The website includes AI limitation notices.
+6. The website includes emergency red-flag guidance.
+7. The website includes human consultation options.
+8. The website includes trusted-source or medical reference placeholders.
+9. The website is mobile responsive.
+10. The website demonstrates responsible AI use and human oversight.
+
+Primary Website Message:
+CareGuide AI helps users make sense of symptoms and decide safer next steps, but it does not replace professional medical advice.
+
+Final Product Positioning:
+CareGuide AI is an AI-assisted healthcare guidance prototype, not a diagnostic system.

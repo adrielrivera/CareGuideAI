@@ -1,0 +1,385 @@
+Document 2: Technical Requirements Document (TRD)
+
+Project Name:
+CareGuide AI
+
+Purpose of this TRD:
+This Technical Requirements Document defines the technical stack, implementation limits, data-handling rules, and safety constraints for the CareGuide AI website prototype. It is intended to guide Codex so that the website is built consistently and safely without unnecessary backend complexity or unsafe medical functionality.
+
+1. Technical Scope
+
+CareGuide AI is a frontend website prototype for an AI & Ethics assignment. It should demonstrate a realistic telemedicine-style interface, but it must not function as a real medical system.
+
+The prototype should allow users to:
+- navigate through healthcare guidance pages,
+- enter mock symptom information,
+- receive simulated urgency-based guidance,
+- view emergency red-flag guidance,
+- access human consultation prompts,
+- read trusted-source placeholders,
+- read privacy and AI limitation notices.
+
+The prototype should not:
+- store real personal or health data,
+- connect to real medical APIs,
+- provide real diagnosis,
+- prescribe medication,
+- make real triage decisions,
+- claim to be medically certified,
+- claim that any result is doctor-approved unless clearly labelled as a prototype feature.
+
+2. Frontend Stack
+
+Framework:
+React with Vite.
+
+Styling:
+Tailwind CSS.
+
+Language:
+JavaScript or TypeScript. TypeScript is preferred if Codex can keep the implementation clean and simple.
+
+UI Icons:
+Use lucide-react icons if available. If not available, use simple text labels or inline SVG icons.
+
+Routing:
+Use React Router if the website is built as multiple pages.
+If simpler, a single-page application with section-based navigation is acceptable, but the navigation must still clearly represent these pages:
+- Home
+- Symptom Checker
+- Urgency Results
+- Emergency Red Flags
+- Human Consultation
+- Trusted Sources
+- Privacy & AI Limitations
+
+State Management:
+Use local React state only.
+Do not use Redux or complex state management.
+
+Forms:
+Use controlled React form inputs.
+Use simple validation for required fields.
+Do not submit data to a server.
+
+3. Backend Requirements
+
+Backend:
+No real backend is required.
+
+Database:
+No database is required.
+
+Authentication:
+No login, signup, or account system is required.
+
+APIs:
+No real medical API should be used.
+No OpenAI, Gemini, or external AI API should be used inside the website.
+The “AI-assisted” result should be simulated through simple frontend logic.
+
+Reason:
+This is a school prototype, not a real healthcare platform. Avoiding backend storage and real APIs reduces privacy, safety, and hallucination risks.
+
+4. Data Handling Rules
+
+Data Storage:
+Do not store any user input in a database.
+Do not use localStorage or sessionStorage for symptom information.
+Keep all form input temporarily in React component state only.
+
+Sensitive Information:
+The website should remind users not to enter highly sensitive personal details.
+
+Data Submission:
+The form should not send data to any server.
+The submit button should only generate a simulated urgency result on the frontend.
+
+Privacy Notice:
+The website must clearly state that this prototype does not store, upload, or share personal health information.
+
+5. Simulated Input Fields
+
+The Symptom Checker page should include these fields:
+
+- Age range
+  Options:
+  Under 13
+  13–21
+  21–35
+  35–50
+  50 and above
+
+- Main symptom description
+  Text area
+
+- Symptom duration
+  Options:
+  Less than 24 hours
+  1–3 days
+  4–7 days
+  More than 1 week
+
+- Severity level
+  Scale from 1 to 5
+
+- Red-flag symptoms checklist
+  Options:
+  Chest pain
+  Severe breathing difficulty
+  Fainting
+  Confusion
+  Severe allergic reaction
+  Uncontrolled bleeding
+  Sudden weakness or numbness
+  Severe dehydration
+  None of the above
+
+- Additional notes
+  Optional text area
+
+6. Simulated Urgency Logic
+
+The website should produce simulated urgency guidance using safe rule-based logic.
+
+Urgent:
+If the user selects any red-flag symptom, the result should be “Urgent” and advise seeking urgent medical help.
+
+Moderate:
+If severity is 4 or 5, or symptoms last more than 1 week, the result should be “Moderate” and advise seeing a doctor soon or seeking professional advice.
+
+Low:
+If severity is 1–3, no red flags are selected, and duration is short, the result can be “Low” and advise monitoring symptoms, resting, and seeking medical advice if symptoms persist or worsen.
+
+Important:
+The result must not diagnose any illness.
+The result must not prescribe medication.
+The result must not say the user is safe.
+The result must not say the condition is definitely serious or not serious.
+The result must always remind the user that this is not a diagnosis.
+
+7. Required Pages / Components
+
+Required pages:
+
+1. Home Page
+Purpose:
+Introduce CareGuide AI and explain its role.
+
+Required elements:
+- Website name and tagline
+- Main call-to-action button
+- Short explanation of AI-assisted urgency guidance
+- Disclaimer that it does not replace doctors
+- Trust-building feature cards
+
+2. Symptom Checker Page
+Purpose:
+Allow users to enter mock symptom information.
+
+Required elements:
+- Symptom input form
+- Red-flag checklist
+- Privacy reminder
+- Form validation
+- Submit button
+
+3. Urgency Results Page
+Purpose:
+Display simulated urgency guidance.
+
+Required elements:
+- Urgency level card
+- Explanation of result
+- General next steps
+- Human consultation call-to-action
+- AI limitation disclaimer
+- Emergency warning if red flags are selected
+
+4. Emergency Red Flags Page
+Purpose:
+Help users recognise urgent warning signs.
+
+Required elements:
+- Red-flag symptom list
+- Clear urgent help guidance
+- Calm but direct language
+- Disclaimer that this is not exhaustive
+
+5. Human Consultation Page
+Purpose:
+Encourage users to seek human medical advice.
+
+Required elements:
+- Explanation of why human oversight matters
+- Mock consultation call-to-action
+- Reminder that this is a prototype
+- No real booking system required
+
+6. Trusted Sources Page
+Purpose:
+Show transparency and credibility.
+
+Required elements:
+- Placeholder trusted-source cards
+- Statement that real deployment would require verified medical review
+- Avoid fabricated medical claims
+
+7. Privacy & AI Limitations Page
+Purpose:
+Explain privacy boundaries and AI risks.
+
+Required elements:
+- No data storage statement
+- AI may be inaccurate
+- Human verification is needed
+- Do not enter sensitive information
+- Emergency disclaimer
+
+8. File Structure
+
+Preferred file structure:
+
+src/
+  App.jsx or App.tsx
+  main.jsx or main.tsx
+  index.css
+  components/
+    Header.jsx
+    Footer.jsx
+    DisclaimerBanner.jsx
+    TrustBadge.jsx
+    UrgencyCard.jsx
+    RedFlagList.jsx
+    SourceCard.jsx
+  pages/
+    Home.jsx
+    SymptomChecker.jsx
+    Results.jsx
+    EmergencyRedFlags.jsx
+    HumanConsultation.jsx
+    TrustedSources.jsx
+    PrivacyLimitations.jsx
+  data/
+    redFlags.js
+    trustedSources.js
+  utils/
+    urgencyLogic.js
+
+If Codex chooses a simpler structure, it must still keep the code organised and readable.
+
+9. UI / Styling Requirements
+
+Use Tailwind CSS.
+
+Design style:
+Clean, modern, professional healthcare-style interface.
+
+Visual tone:
+Professional, calm, clear, and reassuring.
+
+Recommended colours:
+- Primary: medical blue
+- Secondary: teal or soft green
+- Background: light neutral
+- Warning: amber
+- Urgent: red only for serious red-flag warnings
+
+UI elements:
+- Rounded cards
+- Clear buttons
+- Soft shadows
+- Good spacing
+- Consistent headings
+- Professional icons
+- Responsive grid layouts
+- Readable body text
+
+Accessibility:
+- Use high contrast
+- Use labels for all inputs
+- Use large enough font sizes
+- Ensure buttons are easy to click
+- Ensure mobile responsiveness
+- Avoid relying only on colour to communicate urgency
+
+10. Content Safety Requirements
+
+The website must avoid the following phrases:
+- “You have [condition].”
+- “You definitely have [condition].”
+- “Take [specific medication].”
+- “This is safe.”
+- “You do not need a doctor.”
+- “Doctor-approved diagnosis.”
+- “Guaranteed accurate.”
+- “AI-certified medical result.”
+
+The website may use safer phrases such as:
+- “This is not a diagnosis.”
+- “Your symptoms may have several possible causes.”
+- “Consider seeking medical advice if symptoms persist, worsen, or concern you.”
+- “If you experience red-flag symptoms, seek urgent medical help.”
+- “This prototype does not replace a qualified healthcare professional.”
+- “The guidance shown is simulated for educational purposes.”
+
+11. Privacy and Ethics Requirements
+
+The website must include:
+- A visible AI limitation notice.
+- A visible privacy notice.
+- A statement that no real data is stored.
+- A reminder not to enter highly sensitive personal details.
+- Human consultation reminders.
+- Emergency escalation guidance.
+
+The website must not imply:
+- That AI is always correct.
+- That AI can replace doctors.
+- That the website is medically certified.
+- That the website stores secure medical records.
+- That a real doctor has reviewed each result.
+
+12. Testing Requirements
+
+Before finalising the prototype, test these flows:
+
+Test 1:
+User enters mild symptoms, severity 2, no red flags.
+Expected result:
+Low urgency guidance with monitoring advice and doctor reminder if symptoms persist.
+
+Test 2:
+User enters symptoms lasting more than one week.
+Expected result:
+Moderate guidance suggesting professional medical advice.
+
+Test 3:
+User selects chest pain or severe breathing difficulty.
+Expected result:
+Urgent red-flag warning and advice to seek urgent medical help.
+
+Test 4:
+User submits empty form.
+Expected result:
+Validation message asking user to complete required fields.
+
+Test 5:
+Mobile view.
+Expected result:
+Navigation, form, and result cards remain readable and usable.
+
+13. Completion Criteria
+
+The prototype is considered complete when:
+- All required pages exist.
+- Navigation works.
+- The symptom checker form works.
+- Simulated urgency results display correctly.
+- Red-flag symptoms trigger urgent guidance.
+- The website avoids diagnosis and medication recommendations.
+- AI limitation and privacy notices are visible.
+- Human consultation options are included.
+- Design is consistent across all pages.
+- Website is responsive on mobile and desktop.
+- The code is organised and readable.
