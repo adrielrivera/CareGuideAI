@@ -1,16 +1,18 @@
 # CareGuideAI
 
-CareGuideAI is a static telehealth intake website focused on patient
-information capture and clinician handoff.
+CareGuideAI is a frontend-only healthcare guidance prototype for an AI &
+Ethics assignment.
 
 ## What it includes
 
-- A branded landing page for the intake experience
-- A responsive patient intake form for symptoms, history, and visit goals
-- A live sidebar summary that updates as the patient types
-- A generated clinician review summary with copy-to-clipboard support
+- A research-aligned home page with trust badges and visible disclaimers
+- A symptom checker that asks only for minimal symptom context
+- Frontend-only simulated urgency results: Low, Moderate, and Urgent
+- Emergency red-flag guidance, human consultation reminders, trusted-source
+  placeholders, and privacy / AI limitation sections
 
 ## Important note
 
-This project intentionally does not provide automated diagnoses or medication
-recommendations. It is designed to support a licensed clinician review flow.
+This project intentionally does not provide automated diagnoses, medication
+recommendations, or real medical triage. It does not store health information
+and does not replace a qualified healthcare professional.

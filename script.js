@@ -1,206 +1,282 @@
-const form = document.getElementById("intake-form");
-const resultSection = document.getElementById("result");
-const resultSummary = document.getElementById("result-summary");
-const copySummaryButton = document.getElementById("copy-summary");
-const editIntakeButton = document.getElementById("edit-intake");
-const copyFeedback = document.getElementById("copy-feedback");
-const severityInput = form.elements.severity;
-const severityOutput = document.getElementById("severity-output");
+const form = document.getElementById("guidance-form");
+const validationSummary = document.getElementById("validation-summary");
+const resultEmpty = document.getElementById("result-empty");
+const resultCard = document.getElementById("result-card");
+const resultPill = document.getElementById("result-pill");
+const resultTitle = document.getElementById("result-title");
+const resultExplanation = document.getElementById("result-explanation");
+const resultReasons = document.getElementById("result-reasons");
+const resultNextSteps = document.getElementById("result-next-steps");
+const resultHumanReminder = document.getElementById("result-human-reminder");
+const emergencyWarning = document.getElementById("emergency-warning");
+const emergencyWarningText = document.getElementById("emergency-warning-text");
+const startOverButton = document.getElementById("start-over");
+const mockConsultButton = document.getElementById("mock-consult-button");
+const mockConsultFeedback = document.getElementById("mock-consult-feedback");
+const redFlagCheckboxes = [...document.querySelectorAll('input[name="redFlags"]')];
+const revealItems = document.querySelectorAll(".reveal");
 
-const summaryIdentity = document.getElementById("summary-identity");
-const summaryMainConcern = document.getElementById("summary-main-concern");
-const summarySymptoms = document.getElementById("summary-symptoms");
-const summaryContext = document.getElementById("summary-context");
-const summaryAlerts = document.getElementById("summary-alerts");
+const ageRangeField = document.getElementById("age-range");
+const durationField = document.getElementById("duration");
+const mainSymptomField = document.getElementById("main-symptom");
+const severityGroup = document.getElementById("severity-group");
 
-function selectedValues(name) {
-  return [...form.querySelectorAll(`input[name="${name}"]:checked`)].map(
-    (input) => input.value
-  );
-}
-
-function valueOrFallback(value, fallback) {
-  return value && value.trim() ? value.trim() : fallback;
-}
-
-function joinContent(parts, fallback) {
-  const cleanParts = parts.filter(Boolean);
-  return cleanParts.length ? cleanParts.join(" | ") : fallback;
-}
-
-function updateSeverityLabel() {
-  severityOutput.textContent = `${severityInput.value}/10`;
-}
-
-function renderAlerts(alerts) {
-  summaryAlerts.innerHTML = "";
-
-  if (!alerts.length) {
-    const muted = document.createElement("p");
-    muted.className = "muted";
-    muted.textContent = "No urgent symptom flags selected.";
-    summaryAlerts.appendChild(muted);
-    return;
-  }
-
-  alerts.forEach((alert) => {
-    const chip = document.createElement("div");
-    chip.className = "alert-chip";
-    chip.textContent = alert;
-    summaryAlerts.appendChild(chip);
-  });
-}
-
-function buildSummaryText() {
-  const firstName = form.elements.firstName.value.trim();
-  const lastName = form.elements.lastName.value.trim();
-  const age = form.elements.age.value.trim();
-  const pronouns = form.elements.pronouns.value.trim();
-  const email = form.elements.email.value.trim();
-  const phone = form.elements.phone.value.trim();
-  const pregnancyStatus = form.elements.pregnancyStatus.value;
-  const mainConcern = form.elements.mainConcern.value.trim();
-  const duration = form.elements.duration.value;
-  const severity = form.elements.severity.value;
-  const temperature = form.elements.temperature.value.trim();
-  const symptoms = selectedValues("symptoms");
-  const redFlags = selectedValues("redFlags");
-  const symptomDetails = form.elements.symptomDetails.value.trim();
-  const allergies = form.elements.allergies.value.trim();
-  const medications = form.elements.medications.value.trim();
-  const conditions = form.elements.conditions.value.trim();
-  const visitGoals = form.elements.visitGoals.value.trim();
-
-  const patientLine = joinContent(
-    [
-      [firstName, lastName].filter(Boolean).join(" "),
-      age ? `Age ${age}` : "",
-      pronouns,
-      email,
-      phone,
+const resultContent = {
+  Low: {
+    title: "Low urgency guidance",
+    explanation:
+      "The prototype did not detect a red-flag pattern and the reported severity stayed in the lower range. This does not rule out other causes or future changes.",
+    nextSteps: [
+      "Monitor how symptoms change over the next day or two.",
+      "Consider seeking medical advice if symptoms persist, worsen, or start affecting daily activities.",
+      "Review the emergency red flags if new warning signs appear."
     ],
-    "Patient details incomplete"
-  );
-
-  const contextLine = joinContent(
-    [
-      allergies ? `Allergies: ${allergies}` : "",
-      medications ? `Medications: ${medications}` : "",
-      conditions ? `History: ${conditions}` : "",
-      pregnancyStatus ? `Pregnancy status: ${pregnancyStatus}` : "",
+    humanReminder:
+      "If symptoms persist, worsen, or concern you, seek advice from a qualified healthcare professional."
+  },
+  Moderate: {
+    title: "Moderate guidance",
+    explanation:
+      "The prototype marked this as moderate because the symptoms were reported as more intense or longer-lasting. This result is based on simple prototype logic and should not be treated as medical advice.",
+    nextSteps: [
+      "Consider consulting a qualified healthcare professional soon.",
+      "Monitor changes carefully and seek earlier help if symptoms worsen or daily activities become difficult.",
+      "Review emergency red flags and seek urgent help if any appear."
     ],
-    "No medical context entered."
-  );
+    humanReminder:
+      "A qualified healthcare professional can provide follow-up questions, examination, and safer next-step advice."
+  },
+  Urgent: {
+    title: "Urgent guidance",
+    explanation:
+      "One or more red-flag symptoms were selected. Red-flag symptoms may require urgent medical attention and should not be assessed through a prototype alone.",
+    nextSteps: [
+      "Seek urgent medical help now if symptoms are severe, sudden, or worsening.",
+      "Do not rely on this prototype alone for decision-making.",
+      "Contact local emergency services or go to an urgent care setting if needed."
+    ],
+    humanReminder:
+      "Urgent or life-threatening symptoms should be assessed by qualified healthcare professionals immediately."
+  }
+};
 
-  const symptomLine = symptoms.length ? symptoms.join(", ") : "No symptom tags selected.";
-  const alertLine = redFlags.length
-    ? `Urgent review flags: ${redFlags.join(", ")}.`
-    : "Urgent review flags: none reported.";
-
-  return [
-    "CAREGUIDEAI CLINICIAN REVIEW SUMMARY",
-    "",
-    `Patient: ${patientLine}`,
-    `Main concern: ${valueOrFallback(mainConcern, "Not entered")}`,
-    `Duration: ${valueOrFallback(duration, "Not entered")}`,
-    `Severity: ${severity}/10`,
-    `Temperature: ${valueOrFallback(temperature, "Not provided")}`,
-    `Symptoms reported: ${symptomLine}`,
-    alertLine,
-    "",
-    "Patient description:",
-    valueOrFallback(symptomDetails, "No symptom narrative entered."),
-    "",
-    "Medical context:",
-    contextLine,
-    "",
-    "Visit goals:",
-    valueOrFallback(visitGoals, "No visit goals entered."),
-    "",
-    "Safety note:",
-    "This summary is informational intake material for a licensed clinician. It does not contain a diagnosis, treatment plan, or medication recommendation.",
-  ].join("\n");
+function getSeverityLevel() {
+  const selected = form.querySelector('input[name="severityLevel"]:checked');
+  return selected ? Number(selected.value) : null;
 }
 
-function updateLiveSummary() {
-  const fullName = [form.elements.firstName.value, form.elements.lastName.value]
-    .map((part) => part.trim())
-    .filter(Boolean)
-    .join(" ");
-  const age = form.elements.age.value.trim();
-  const email = form.elements.email.value.trim();
-  const phone = form.elements.phone.value.trim();
-  const mainConcern = form.elements.mainConcern.value.trim();
-  const duration = form.elements.duration.value;
-  const symptoms = selectedValues("symptoms");
-  const redFlags = selectedValues("redFlags");
-  const allergies = form.elements.allergies.value.trim();
-  const medications = form.elements.medications.value.trim();
-  const conditions = form.elements.conditions.value.trim();
-  const mainConcernParts = [];
+function getSelectedRedFlags() {
+  return redFlagCheckboxes
+    .filter((checkbox) => checkbox.checked && checkbox.value !== "None of the above")
+    .map((checkbox) => checkbox.value);
+}
 
-  if (mainConcern) {
-    mainConcernParts.push(mainConcern);
+function getValidationErrors(input) {
+  const errors = [];
+
+  if (!input.ageRange) {
+    errors.push("Please select an age range.");
   }
 
-  if (duration) {
-    mainConcernParts.push(`Duration: ${duration}`);
+  if (!input.mainSymptom.trim()) {
+    errors.push("Please briefly describe what you are experiencing.");
   }
 
-  if (mainConcern || duration || symptoms.length) {
-    mainConcernParts.push(`Severity: ${form.elements.severity.value}/10`);
+  if (!input.duration) {
+    errors.push("Please select how long the symptoms have been present.");
   }
 
-  summaryIdentity.textContent = joinContent(
-    [fullName, age ? `Age ${age}` : "", email, phone],
-    "No patient details entered yet."
-  );
+  if (!input.severityLevel) {
+    errors.push("Please select a severity level from 1 to 5.");
+  }
 
-  summaryMainConcern.textContent = joinContent(
-    mainConcernParts,
-    "Describe the primary concern to build the visit summary."
-  );
+  return errors;
+}
 
-  summarySymptoms.textContent = symptoms.length
-    ? symptoms.join(", ")
-    : "No symptom tags selected yet.";
+function resetValidation() {
+  validationSummary.hidden = true;
+  validationSummary.innerHTML = "";
+  ageRangeField.classList.remove("is-invalid");
+  durationField.classList.remove("is-invalid");
+  mainSymptomField.classList.remove("is-invalid");
+  severityGroup.classList.remove("fieldset-invalid");
+}
 
-  summaryContext.textContent = joinContent(
-    [
-      allergies ? `Allergies: ${allergies}` : "",
-      medications ? `Meds: ${medications}` : "",
-      conditions ? `History: ${conditions}` : "",
-    ],
-    "Allergies, medications, and relevant history will appear here."
-  );
-
-  renderAlerts(redFlags);
+function showValidation(errors) {
+  validationSummary.hidden = false;
+  validationSummary.innerHTML = `
+    <strong>Please review a few required items before continuing.</strong>
+    <ul>${errors.map((error) => `<li>${error}</li>`).join("")}</ul>
+  `;
 }
 
 function validateForm() {
-  if (!form.reportValidity()) {
+  resetValidation();
+  const input = buildInputState();
+  const errors = getValidationErrors(input);
+
+  if (!input.ageRange) {
+    ageRangeField.classList.add("is-invalid");
+  }
+
+  if (!input.mainSymptom.trim()) {
+    mainSymptomField.classList.add("is-invalid");
+  }
+
+  if (!input.duration) {
+    durationField.classList.add("is-invalid");
+  }
+
+  if (!input.severityLevel) {
+    severityGroup.classList.add("fieldset-invalid");
+  }
+
+  if (errors.length) {
+    showValidation(errors);
+    validationSummary.scrollIntoView({ behavior: "smooth", block: "nearest" });
     return false;
   }
 
   return true;
 }
 
-form.addEventListener("input", () => {
-  updateSeverityLabel();
-  updateLiveSummary();
-  copyFeedback.textContent = "";
-});
+function getUrgencyLevel({ redFlags, severityLevel, duration }) {
+  if (redFlags.length > 0) {
+    return "Urgent";
+  }
 
-form.addEventListener("change", updateLiveSummary);
+  if (severityLevel >= 4 || duration === "More than 1 week") {
+    return "Moderate";
+  }
 
-form.addEventListener("reset", () => {
-  window.setTimeout(() => {
-    severityInput.value = "4";
-    updateSeverityLabel();
-    updateLiveSummary();
-    resultSection.hidden = true;
-    copyFeedback.textContent = "";
-  }, 0);
+  return "Low";
+}
+
+function getResultReasons({ redFlags, severityLevel, duration }) {
+  if (redFlags.length > 0) {
+    return [
+      `Red-flag symptoms selected: ${redFlags.join(", ")}.`,
+      "Any red-flag selection is treated as urgent in this prototype."
+    ];
+  }
+
+  const reasons = [];
+
+  if (severityLevel >= 4) {
+    reasons.push(`Severity was marked at ${severityLevel} out of 5.`);
+  }
+
+  if (duration === "More than 1 week") {
+    reasons.push("Symptoms were reported as lasting more than one week.");
+  }
+
+  if (!reasons.length) {
+    reasons.push(
+      "No red-flag symptoms were selected and the reported severity stayed in the lower range."
+    );
+    reasons.push("The duration selected was still within a shorter monitoring window.");
+  }
+
+  return reasons;
+}
+
+function evaluateGuidance(input) {
+  const urgencyLevel = getUrgencyLevel(input);
+  const content = resultContent[urgencyLevel];
+
+  return {
+    urgencyLevel,
+    title: content.title,
+    explanation: content.explanation,
+    nextSteps: content.nextSteps,
+    humanReminder: content.humanReminder,
+    reasons: getResultReasons(input),
+    showEmergencyWarning: input.redFlags.length > 0
+  };
+}
+
+function renderList(listElement, items) {
+  listElement.innerHTML = items.map((item) => `<li>${item}</li>`).join("");
+}
+
+function renderResult(input) {
+  const guidance = evaluateGuidance(input);
+
+  resultPill.className = "urgency-pill";
+  resultPill.classList.add(`urgency-pill-${guidance.urgencyLevel.toLowerCase()}`);
+  resultPill.textContent = `${guidance.urgencyLevel} urgency`;
+
+  resultTitle.textContent = guidance.title;
+  resultExplanation.textContent = guidance.explanation;
+  resultHumanReminder.textContent = guidance.humanReminder;
+
+  renderList(resultReasons, guidance.reasons);
+  renderList(resultNextSteps, guidance.nextSteps);
+
+  if (guidance.showEmergencyWarning) {
+    emergencyWarning.hidden = false;
+    emergencyWarningText.textContent = `${input.redFlags.join(
+      ", "
+    )} may require urgent medical attention. This list is not exhaustive.`;
+  } else {
+    emergencyWarning.hidden = true;
+    emergencyWarningText.textContent = "";
+  }
+
+  resultEmpty.hidden = true;
+  resultCard.hidden = false;
+}
+
+function clearResult() {
+  resultCard.hidden = true;
+  resultEmpty.hidden = false;
+  emergencyWarning.hidden = true;
+  emergencyWarningText.textContent = "";
+}
+
+function resetExperience(shouldScroll) {
+  form.reset();
+  resetValidation();
+  clearResult();
+
+  if (shouldScroll) {
+    document
+      .getElementById("symptom-checker")
+      .scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
+function buildInputState() {
+  return {
+    ageRange: ageRangeField.value,
+    mainSymptom: mainSymptomField.value.trim(),
+    duration: durationField.value,
+    severityLevel: getSeverityLevel(),
+    redFlags: getSelectedRedFlags(),
+    additionalNotes: form.elements.additionalNotes.value.trim()
+  };
+}
+
+redFlagCheckboxes.forEach((checkbox) => {
+  checkbox.addEventListener("change", (event) => {
+    if (event.target.value === "None of the above" && event.target.checked) {
+      redFlagCheckboxes.forEach((item) => {
+        if (item !== event.target) {
+          item.checked = false;
+        }
+      });
+      return;
+    }
+
+    if (event.target.checked && event.target.value !== "None of the above") {
+      const noneOption = redFlagCheckboxes.find(
+        (item) => item.value === "None of the above"
+      );
+      if (noneOption) {
+        noneOption.checked = false;
+      }
+    }
+  });
 });
 
 form.addEventListener("submit", (event) => {
@@ -210,24 +286,39 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
-  const summary = buildSummaryText();
-  resultSummary.textContent = summary;
-  resultSection.hidden = false;
-  resultSection.scrollIntoView({ behavior: "smooth", block: "start" });
+  const input = buildInputState();
+  renderResult(input);
+  document
+    .getElementById("urgency-results")
+    .scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
-copySummaryButton.addEventListener("click", async () => {
-  try {
-    await navigator.clipboard.writeText(resultSummary.textContent);
-    copyFeedback.textContent = "Summary copied to clipboard.";
-  } catch (error) {
-    copyFeedback.textContent = "Clipboard access was not available in this browser.";
+form.addEventListener("input", () => {
+  if (!validationSummary.hidden) {
+    validateForm();
   }
 });
 
-editIntakeButton.addEventListener("click", () => {
-  form.scrollIntoView({ behavior: "smooth", block: "start" });
+form.addEventListener("reset", () => {
+  window.setTimeout(() => {
+    resetValidation();
+    clearResult();
+  }, 0);
 });
+
+startOverButton.addEventListener("click", () => {
+  resetExperience(true);
+});
+
+mockConsultButton.addEventListener("click", () => {
+  mockConsultFeedback.textContent =
+    "Prototype only: no real appointment is booked. In a live service, this action would direct users toward qualified healthcare support.";
+});
+
+window.CareGuideAI = {
+  getValidationErrors,
+  evaluateGuidance
+};
 
 const observer = new IntersectionObserver(
   (entries) => {
@@ -237,10 +328,9 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.18 }
+  { threshold: 0.16 }
 );
 
-document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+revealItems.forEach((item) => observer.observe(item));
 
-updateSeverityLabel();
-updateLiveSummary();
+clearResult();
