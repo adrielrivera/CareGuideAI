@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CareGuide AI | Clearer symptom guidance. Safer next steps.</title>
+    <meta
+      name="description"
+      content="CareGuide AI is a responsible AI-assisted healthcare guidance prototype that offers simulated urgency guidance, red-flag reminders, privacy safeguards, and human consultation prompts."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="notice-banner" role="note">
+          <p>
+            Prototype notice: CareGuide AI provides simulated urgency guidance
+            only. It is not medical advice, diagnosis, or treatment guidance
+            and does not replace a qualified healthcare professional.
+          </p>
+          <a href="#emergency-red-flags">View emergency red flags</a>
+        </div>
+
+        <nav class="main-nav" aria-label="Primary">
+          <a class="brand" href="#home">
+            <span class="brand-mark" aria-hidden="true">CG</span>
+            <span>
+              <strong>CareGuide AI</strong>
+              <small>AI-assisted healthcare guidance prototype</small>
+            </span>
+          </a>
+
+          <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#symptom-checker">Symptom Checker</a>
+            <a href="#emergency-red-flags">Emergency Red Flags</a>
+            <a href="#human-consultation">Human Consultation</a>
+            <a href="#trusted-sources">Trusted Sources</a>
+            <a href="#privacy-ai-limitations">Privacy &amp; AI Limitations</a>
+          </div>
+
+          <a class="primary-button nav-cta" href="#symptom-checker">
+            Start Symptom Check
+          </a>
+        </nav>
+      </header>
+
+      <main>
+        <section id="home" class="hero section-card reveal">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <p class="eyebrow">Scenario B reframed for responsible AI use</p>
+              <h1>CareGuide AI</h1>
+              <p class="tagline">Clearer symptom guidance. Safer next steps.</p>
+              <p class="hero-text">
+                CareGuide AI is a calmer alternative to stressful symptom
+                searching. It helps students and young adults sort symptoms into
+                simple urgency levels, notice red-flag warnings, and understand
+                when human medical advice matters. It does not diagnose
+                conditions, recommend medication, or replace a qualified
+                healthcare professional.
+              </p>
+              <div class="badge-row" aria-label="Trust badges">
+                <span class="info-badge">AI-assisted guidance</span>
+                <span class="info-badge">Urgency guidance only</span>
+                <span class="info-badge">Not a diagnosis</span>
+                <span class="info-badge">Human consultation recommended</span>
+                <span class="info-badge">Privacy-aware prototype</span>
+                <span class="info-badge">Future medical review required</span>
+              </div>
+              <div class="cta-row">
+                <a class="primary-button" href="#symptom-checker">
+                  Start Symptom Check
+                </a>
+                <a class="secondary-button" href="#emergency-red-flags">
+                  Learn About Red Flags
+                </a>
+              </div>
+            </div>
+
+            <aside class="hero-side">
+              <div class="hero-panel">
+                <p class="eyebrow">Why this prototype exists</p>
+                <h2>Built to reduce confusion, not replace care.</h2>
+                <p>
+                  Your group research showed that young adults want help knowing
+                when symptoms may need medical attention, without conflicting
+                or fear-inducing search results. This prototype responds with
+                urgency guidance, visible limitations, and a clear handoff to
+                human care.
+              </p>
+              </div>
+              <div class="hero-stats" aria-label="Research highlights">
+                <article class="stat-card">
+                  <strong>77.3%</strong>
+                  <p>said knowing when to see a doctor would help most.</p>
+                </article>
+                <article class="stat-card">
+                  <strong>63.6%</strong>
+                  <p>felt frustrated by conflicting or scary symptom results.</p>
+                </article>
+                <article class="stat-card">
+                  <strong>72.7%</strong>
+                  <p>said human consultation options would increase trust.</p>
+                </article>
+              </div>
+            </aside>
+          </div>
+
+          <div class="feature-grid" aria-label="Core features">
+            <article class="feature-card">
+              <h3>Urgency-based guidance</h3>
+              <p>
+                The checker produces Low, Moderate, or Urgent guidance using
+                simple frontend-only rules instead of diagnostic claims.
+              </p>
+            </article>
+            <article class="feature-card">
+              <h3>Emergency visibility</h3>
+              <p>
+                Red-flag symptoms stay visible so users know when urgent medical
+                help may be needed.
+              </p>
+            </article>
+            <article class="feature-card">
+              <h3>Trusted-source transparency</h3>
+              <p>
+                Placeholder references show how a real deployment would require
+                verified healthcare review.
+              </p>
+            </article>
+            <article class="feature-card">
+              <h3>Privacy by minimisation</h3>
+              <p>
+                The form asks only for basic symptom context and does not store,
+                upload, or share responses.
+              </p>
+            </article>
+          </div>
+
+          <div class="research-strip" aria-labelledby="research-title">
+            <div class="section-heading compact-heading">
+              <div>
+                <p class="eyebrow">Research snapshot</p>
+                <h2 id="research-title">What students and young adults told your team</h2>
+              </div>
+              <p class="section-copy">
+                These findings shaped the focus on urgency guidance, calmer
+                wording, trusted-source transparency, and visible human
+                oversight.
+              </p>
+            </div>
+
+            <div class="research-grid">
+              <article class="research-card">
+                <strong>54.5%</strong>
+                <p>search symptoms online very often, and 54.5% start there when feeling unwell.</p>
+              </article>
+              <article class="research-card">
+                <strong>63.6%</strong>
+                <p>felt frustrated by conflicting information or scary worst-case results.</p>
+              </article>
+              <article class="research-card">
+                <strong>50%</strong>
+                <p>could not tell which sources were trustworthy.</p>
+              </article>
+              <article class="research-card">
+                <strong>77.3%</strong>
+                <p>had experienced uncertainty about whether symptoms required medical attention.</p>
+              </article>
+              <article class="research-card">
+                <strong>77.3%</strong>
+                <p>said professional design and trusted-source references would increase trust.</p>
+              </article>
+              <article class="research-card">
+                <strong>72.7%</strong>
+                <p>said a doctor-review indicator and human consultation option would increase trust.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="workflow section-card reveal" aria-labelledby="workflow-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">How it works</p>
+              <h2 id="workflow-title">A simple guidance flow with visible human oversight</h2>
+            </div>
+            <p class="section-copy">
+              The journey is designed to stay easy to follow: Home, Symptom
+              Checker, Simulated urgency guidance, then safer next steps.
+            </p>
+          </div>
+
+          <div class="workflow-grid">
+            <article class="workflow-card">
+              <span>1</span>
+              <h3>Share only basic symptom details</h3>
+              <p>
+                Users enter age range, symptom description, duration, severity,
+                and any red-flag symptoms.
+              </p>
+            </article>
+            <article class="workflow-card">
+              <span>2</span>
+              <h3>Review simulated urgency guidance</h3>
+              <p>
+                The result explains whether the current pattern appears Low,
+                Moderate, or Urgent using simple prototype logic rather than a
+                medical conclusion.
+              </p>
+            </article>
+            <article class="workflow-card">
+              <span>3</span>
+              <h3>Move toward human care when needed</h3>
+              <p>
+                Every result includes reminders that it is not medical advice,
+                diagnosis, or treatment guidance, and that professional care
+                still matters.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section
+          id="symptom-checker"
+          class="checker section-card reveal"
+          aria-labelledby="checker-title"
+        >
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Symptom checker</p>
+              <h2 id="checker-title">Check urgency without sharing personal identifiers</h2>
+            </div>
+            <p class="section-copy">
+              This form is designed to produce simulated Low, Moderate, or
+              Urgent guidance only.
+            </p>
+          </div>
+
+          <div class="progress-row" aria-label="Guidance steps">
+            <span class="progress-pill active">1. Share symptoms</span>
+            <span class="progress-pill">2. Review urgency</span>
+            <span class="progress-pill">3. Decide safer next steps</span>
+          </div>
+
+          <div class="checker-overview" aria-label="Checker overview">
+            <article class="mini-card">
+              <h3>What you will receive</h3>
+              <p>
+                A simulated urgency result that explains whether the current
+                pattern appears Low, Moderate, or Urgent.
+              </p>
+            </article>
+            <article class="mini-card">
+              <h3>What this checker will not do</h3>
+              <p>
+                It will not diagnose a condition, recommend medication, or act
+                as a replacement for a qualified healthcare professional.
+              </p>
+            </article>
+            <article class="mini-card">
+              <h3>When to seek help quickly</h3>
+              <p>
+                If red-flag symptoms are present, seek urgent medical help
+                rather than relying on online guidance alone.
+              </p>
+            </article>
+          </div>
+
+          <div class="checker-layout">
+            <div class="checker-main">
+              <div class="callout callout-blue">
+                <strong>Privacy reminder:</strong>
+                Do not enter names, contact details, identification numbers, or
+                highly sensitive medical history. This prototype does not store,
+                upload, or share your responses.
+              </div>
+
+              <div class="callout callout-teal">
+                <strong>AI limitation:</strong>
+                This is not a diagnosis. You will receive simulated urgency
+                guidance only, and it should not be treated as medical advice,
+                diagnosis, or treatment guidance.
+              </div>
+
+              <form id="guidance-form" novalidate>
+                <div
+                  id="validation-summary"
+                  class="validation-summary"
+                  aria-live="polite"
+                  hidden
+                ></div>
+
+                <div class="form-section">
+                  <h3>Basic context</h3>
+                  <div class="field-grid two-column">
+                    <label for="age-range">
+                      Age range
+                      <select id="age-range" name="ageRange">
+                        <option value="">Select age range</option>
+                        <option value="Under 13">Under 13</option>
+                        <option value="13-21">13-21</option>
+                        <option value="21-35">21-35</option>
+                        <option value="35-50">35-50</option>
+                        <option value="50 and above">50 and above</option>
+                      </select>
+                    </label>
+
+                    <label for="duration">
+                      Symptom duration
+                      <select id="duration" name="duration">
+                        <option value="">Select duration</option>
+                        <option value="Less than 24 hours">
+                          Less than 24 hours
+                        </option>
+                        <option value="1-3 days">1-3 days</option>
+                        <option value="4-7 days">4-7 days</option>
+                        <option value="More than 1 week">
+                          More than 1 week
+                        </option>
+                      </select>
+                    </label>
+                  </div>
+
+                  <label for="main-symptom">
+                    Main symptom description
+                    <textarea
+                      id="main-symptom"
+                      name="mainSymptom"
+                      rows="5"
+                      placeholder="Briefly describe what you are experiencing."
+                    ></textarea>
+                  </label>
+                </div>
+
+                <div class="form-section">
+                  <h3>Severity</h3>
+                  <fieldset id="severity-group" class="severity-group">
+                    <legend>How severe does this feel right now?</legend>
+                    <div class="severity-options">
+                      <label class="severity-option">
+                        <input type="radio" name="severityLevel" value="1" />
+                        <span><strong>1</strong><small>Very mild</small></span>
+                      </label>
+                      <label class="severity-option">
+                        <input type="radio" name="severityLevel" value="2" />
+                        <span><strong>2</strong><small>Mild</small></span>
+                      </label>
+                      <label class="severity-option">
+                        <input type="radio" name="severityLevel" value="3" />
+                        <span><strong>3</strong><small>Noticeable</small></span>
+                      </label>
+                      <label class="severity-option">
+                        <input type="radio" name="severityLevel" value="4" />
+                        <span><strong>4</strong><small>Strong</small></span>
+                      </label>
+                      <label class="severity-option">
+                        <input type="radio" name="severityLevel" value="5" />
+                        <span><strong>5</strong><small>Very strong</small></span>
+                      </label>
+                    </div>
+                  </fieldset>
+                </div>
+
+                <div class="form-section">
+                  <h3>Red-flag symptoms</h3>
+                  <fieldset
+                    id="red-flag-group"
+                    class="chip-fieldset"
+                    aria-describedby="red-flag-hint"
+                  >
+                    <legend>
+                      Select any warning signs that may require urgent medical
+                      help.
+                    </legend>
+                    <div class="chip-grid">
+                      <label class="chip">
+                        <input type="checkbox" name="redFlags" value="Chest pain" />
+                        <span>Chest pain</span>
+                      </label>
+                      <label class="chip">
+                        <input
+                          type="checkbox"
+                          name="redFlags"
+                          value="Severe breathing difficulty"
+                        />
+                        <span>Severe breathing difficulty</span>
+                      </label>
+                      <label class="chip">
+                        <input type="checkbox" name="redFlags" value="Fainting" />
+                        <span>Fainting</span>
+                      </label>
+                      <label class="chip">
+                        <input type="checkbox" name="redFlags" value="Confusion" />
+                        <span>Confusion</span>
+                      </label>
+                      <label class="chip">
+                        <input
+                          type="checkbox"
+                          name="redFlags"
+                          value="Severe allergic reaction"
+                        />
+                        <span>Severe allergic reaction</span>
+                      </label>
+                      <label class="chip">
+                        <input
+                          type="checkbox"
+                          name="redFlags"
+                          value="Uncontrolled bleeding"
+                        />
+                        <span>Uncontrolled bleeding</span>
+                      </label>
+                      <label class="chip">
+                        <input
+                          type="checkbox"
+                          name="redFlags"
+                          value="Sudden weakness or numbness"
+                        />
+                        <span>Sudden weakness or numbness</span>
+                      </label>
+                      <label class="chip">
+                        <input
+                          type="checkbox"
+                          name="redFlags"
+                          value="Severe dehydration"
+                        />
+                        <span>Severe dehydration</span>
+                      </label>
+                      <label class="chip chip-neutral">
+                        <input
+                          type="checkbox"
+                          name="redFlags"
+                          value="None of the above"
+                        />
+                        <span>None of the above</span>
+                      </label>
+                    </div>
+                    <p id="red-flag-hint" class="field-hint">
+                      Select "None of the above" only if no listed warning
+                      signs apply.
+                    </p>
+                  </fieldset>
+                </div>
+
+                <div class="form-section">
+                  <h3>Additional notes</h3>
+                  <label for="additional-notes">
+                    Optional notes
+                    <textarea
+                      id="additional-notes"
+                      name="additionalNotes"
+                      rows="4"
+                      placeholder="Optional: add context such as what seems to worsen the symptom, whether it affects daily activities, or why you are concerned."
+                    ></textarea>
+                  </label>
+                </div>
+
+                <div class="form-actions">
+                  <button type="submit" class="primary-button">
+                    Check Urgency
+                  </button>
+                  <button type="reset" class="secondary-button">
+                    Clear Form
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <aside class="checker-side">
+              <div class="side-card">
+                <h3>Before you continue</h3>
+                <ul>
+                  <li>Share only the symptom details needed for this prototype.</li>
+                  <li>Do not enter names, contact details, identification numbers, or highly sensitive medical history.</li>
+                  <li>You will receive urgency guidance only, not medical advice, diagnosis, or treatment guidance.</li>
+                  <li>If severe or life-threatening symptoms are present, seek urgent help immediately.</li>
+                </ul>
+              </div>
+              <div class="side-card">
+                <h3>What this checker will not do</h3>
+                <ul>
+                  <li>It will not diagnose a condition.</li>
+                  <li>It will not recommend medication.</li>
+                  <li>It will not claim real doctor approval or clinical certification.</li>
+                  <li>It will not replace a qualified healthcare professional.</li>
+                </ul>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section
+          id="urgency-results"
+          class="results section-card reveal"
+          aria-labelledby="results-title"
+        >
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Urgency results</p>
+              <h2 id="results-title">Simulated urgency guidance</h2>
+            </div>
+            <p class="section-copy">
+              The result below is based on simple prototype rules and should not
+              be treated as medical advice, diagnosis, or treatment guidance.
+            </p>
+          </div>
+
+          <div class="urgency-guide" aria-label="Urgency levels explained">
+            <article class="urgency-guide-card urgency-guide-low">
+              <h3>Low</h3>
+              <p>
+                Monitor symptoms, watch for changes, and seek help if symptoms
+                persist, worsen, or concern you.
+              </p>
+            </article>
+            <article class="urgency-guide-card urgency-guide-moderate">
+              <h3>Moderate</h3>
+              <p>
+                Consider seeking professional medical advice soon, especially
+                when symptoms feel intense or last longer.
+              </p>
+            </article>
+            <article class="urgency-guide-card urgency-guide-urgent">
+              <h3>Urgent</h3>
+              <p>
+                Red-flag symptoms may require urgent medical help and should not
+                be assessed through this prototype alone.
+              </p>
+            </article>
+          </div>
+
+          <div id="result-empty" class="empty-state">
+            Complete the symptom checker to view Low, Moderate, or Urgent
+            guidance.
+          </div>
+
+          <div id="result-card" class="result-card" hidden tabindex="-1">
+            <div id="result-pill" class="urgency-pill urgency-pill-low">
+              Low urgency
+            </div>
+            <h3 id="result-title">Result title</h3>
+            <p id="result-explanation" class="result-explanation"></p>
+
+            <div class="callout callout-plain">
+              <strong>This is not a diagnosis.</strong>
+              Your symptoms may have several possible causes. This result is
+              based on simple prototype logic and should not be treated as
+              medical advice, diagnosis, or treatment guidance.
+            </div>
+
+            <div id="emergency-warning" class="warning-panel" hidden>
+              <strong>Red-flag symptoms selected:</strong>
+              <p id="emergency-warning-text"></p>
+            </div>
+
+            <div class="result-grid">
+              <div class="result-column">
+                <h4>Why this guidance appeared</h4>
+                <ul id="result-reasons" class="detail-list"></ul>
+              </div>
+              <div class="result-column">
+                <h4>Suggested next steps</h4>
+                <ul id="result-next-steps" class="detail-list"></ul>
+              </div>
+            </div>
+
+            <div class="human-reminder">
+              <h4>Human consultation reminder</h4>
+              <p id="result-human-reminder">
+                If symptoms persist, worsen, or concern you, seek advice from a
+                qualified healthcare professional.
+              </p>
+            </div>
+
+            <div class="result-actions">
+              <a class="primary-button" href="#human-consultation">
+                Review Human Consultation Guidance
+              </a>
+              <a class="secondary-button" href="#emergency-red-flags">
+                View Emergency Red Flags
+              </a>
+              <a class="secondary-button" href="#privacy-ai-limitations">
+                Read AI Limitations
+              </a>
+              <button id="start-over" class="secondary-button" type="button">
+                Start Over
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="emergency-red-flags"
+          class="section-card reveal"
+          aria-labelledby="red-flags-title"
+        >
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Emergency red flags</p>
+              <h2 id="red-flags-title">Know when urgent medical help may be needed</h2>
+            </div>
+            <p class="section-copy">
+              This list is not exhaustive. If symptoms feel severe, sudden, or
+              rapidly worsening, seek urgent medical help immediately.
+            </p>
+          </div>
+
+          <div class="callout callout-plain">
+            <strong>How to use this section:</strong>
+            Scan these warning signs first. If any apply and symptoms feel
+            severe, sudden, or rapidly worsening, choose urgent medical help
+            over waiting for more online reassurance.
+          </div>
+
+          <div class="red-flag-grid">
+            <article class="red-flag-card">
+              <h3>Chest pain</h3>
+              <p>
+                Seek urgent help if chest pain is severe, worsening, or paired
+                with shortness of breath, fainting, or sudden weakness.
+              </p>
+            </article>
+            <article class="red-flag-card">
+              <h3>Severe breathing difficulty</h3>
+              <p>
+                Breathing difficulty may require urgent medical attention,
+                especially if speech or movement becomes difficult.
+              </p>
+            </article>
+            <article class="red-flag-card">
+              <h3>Fainting</h3>
+              <p>
+                Sudden loss of consciousness should be treated seriously and may
+                need urgent assessment.
+              </p>
+            </article>
+            <article class="red-flag-card">
+              <h3>Confusion</h3>
+              <p>
+                New confusion or disorientation should be treated cautiously and
+                may need urgent assessment.
+              </p>
+            </article>
+            <article class="red-flag-card">
+              <h3>Severe allergic reaction</h3>
+              <p>
+                Swelling, breathing problems, or rapidly worsening symptoms may
+                require emergency care.
+              </p>
+            </article>
+            <article class="red-flag-card">
+              <h3>Uncontrolled bleeding</h3>
+              <p>
+                Bleeding that does not stop or feels severe should be treated as
+                urgent.
+              </p>
+            </article>
+            <article class="red-flag-card">
+              <h3>Sudden weakness or numbness</h3>
+              <p>
+                Sudden one-sided weakness or numbness may require urgent
+                evaluation.
+              </p>
+            </article>
+            <article class="red-flag-card">
+              <h3>Severe dehydration</h3>
+              <p>
+                Severe dehydration can become dangerous quickly, especially if
+                dizziness or inability to keep fluids down is present.
+              </p>
+            </article>
+          </div>
+
+          <div class="callout callout-red">
+            <strong>Urgent help guidance:</strong>
+            If you are experiencing severe or life-threatening symptoms, seek
+            urgent medical help immediately.
+          </div>
+        </section>
+
+        <section
+          id="human-consultation"
+          class="section-card reveal"
+          aria-labelledby="consultation-title"
+        >
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Human consultation</p>
+              <h2 id="consultation-title">Why human medical review still matters</h2>
+            </div>
+            <p class="section-copy">
+              CareGuide AI supports decision-making, but qualified healthcare
+              professionals remain responsible for medical advice and treatment.
+            </p>
+          </div>
+
+          <div class="consultation-layout">
+            <div class="consultation-copy">
+              <p>
+                A human clinician can ask follow-up questions, consider medical
+                history, examine symptoms in context, and respond when symptoms
+                change unexpectedly.
+              </p>
+              <ul class="detail-list">
+                <li>Seek help if symptoms persist or worsen.</li>
+                <li>Seek help if symptoms affect daily activities.</li>
+                <li>Seek help any time you are worried or uncertain.</li>
+                <li>Seek urgent help immediately if red-flag symptoms appear.</li>
+              </ul>
+            </div>
+
+            <div class="consultation-card">
+              <h3>Prototype consultation action</h3>
+              <p>
+                This prototype does not book real appointments. In a real
+                service, this action would connect users to qualified
+                healthcare support.
+              </p>
+              <button id="mock-consult-button" class="primary-button" type="button">
+                Prototype consultation placeholder
+              </button>
+              <p id="mock-consult-feedback" class="helper-message" aria-live="polite"></p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="trusted-sources"
+          class="section-card reveal"
+          aria-labelledby="sources-title"
+        >
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Trusted sources</p>
+              <h2 id="sources-title">Transparency matters in healthcare guidance</h2>
+            </div>
+            <p class="section-copy">
+              Real deployment would require verified healthcare sources and
+              qualified medical review.
+            </p>
+          </div>
+
+          <div class="callout callout-blue">
+            <strong>Honest placeholder notice:</strong>
+            These cards show the types of references a real deployment would
+            need. They are not live citations and do not imply external medical
+            approval or clinical validation.
+          </div>
+
+          <div class="source-grid">
+            <article class="source-card">
+              <span class="source-badge">Prototype-only source placeholder</span>
+              <h3>Public health guidance</h3>
+              <p>
+                A real version should compare health guidance against recognised
+                public health resources.
+              </p>
+            </article>
+            <article class="source-card">
+              <span class="source-badge">Prototype-only source placeholder</span>
+              <h3>Hospital or clinic-reviewed content</h3>
+              <p>
+                Symptom guidance should be reviewed against reputable healthcare
+                organisations before release.
+              </p>
+            </article>
+            <article class="source-card">
+              <span class="source-badge">Prototype-only source placeholder</span>
+              <h3>Medical professional review process</h3>
+              <p>
+                The content model should be checked by qualified medical
+                professionals in a real product.
+              </p>
+            </article>
+            <article class="source-card">
+              <span class="source-badge">Prototype-only source placeholder</span>
+              <h3>Emergency care guidelines</h3>
+              <p>
+                Red-flag messaging should be grounded in verified emergency care
+                guidance, not invented examples.
+              </p>
+            </article>
+          </div>
+
+          <div class="callout callout-teal">
+            In a real deployment, all medical information should be reviewed
+            against verified healthcare sources and qualified medical
+            professionals.
+          </div>
+        </section>
+
+        <section
+          id="privacy-ai-limitations"
+          class="section-card reveal"
+          aria-labelledby="privacy-title"
+        >
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Privacy &amp; AI limitations</p>
+              <h2 id="privacy-title">Keep the safeguards visible</h2>
+            </div>
+            <p class="section-copy">
+              The safest design choice for this prototype is data minimisation
+              and visible human oversight.
+            </p>
+          </div>
+
+          <div class="signal-row" aria-label="Privacy and limitation signals">
+            <span class="signal-badge">No storage</span>
+            <span class="signal-badge">No upload</span>
+            <span class="signal-badge">No sharing</span>
+            <span class="signal-badge">Human verification needed</span>
+          </div>
+
+          <div class="limitations-grid">
+            <article class="limit-card">
+              <h3>Temporary on-page use only</h3>
+              <p>
+                This prototype does not store, upload, or share personal health
+                information. Inputs are used only temporarily to simulate
+                guidance on the page.
+              </p>
+            </article>
+            <article class="limit-card">
+              <h3>Do not enter sensitive details</h3>
+              <p>
+                Avoid names, contact details, identification numbers, and
+                highly sensitive medical history or other highly sensitive
+                personal information.
+              </p>
+            </article>
+            <article class="limit-card">
+              <h3>AI may be inaccurate</h3>
+              <p>
+                The result is based on simple prototype logic and may not match
+                real medical risk. Human verification is needed.
+              </p>
+            </article>
+            <article class="limit-card">
+              <h3>Not a replacement for doctors</h3>
+              <p>
+                CareGuide AI supports reflection and urgency awareness. It does
+                not replace a qualified healthcare professional.
+              </p>
+            </article>
+            <article class="limit-card">
+              <h3>No medication recommendations</h3>
+              <p>
+                The prototype avoids suggesting medication or treatment plans
+                because those decisions require qualified medical judgement.
+              </p>
+            </article>
+            <article class="limit-card">
+              <h3>Emergency disclaimer</h3>
+              <p>
+                If severe or life-threatening symptoms are present, seek urgent
+                medical help immediately rather than relying on this prototype.
+              </p>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div>
+          <strong>CareGuide AI</strong>
+          <p>
+            Responsible AI-assisted healthcare guidance prototype for an AI &
+            Ethics assignment.
+          </p>
+        </div>
+        <div class="footer-links">
+          <a href="#privacy-ai-limitations">Privacy &amp; AI Limitations</a>
+          <a href="#trusted-sources">Trusted Sources</a>
+          <a href="#human-consultation">Human Consultation</a>
+          <a href="#emergency-red-flags">Emergency Red Flags</a>
+        </div>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
