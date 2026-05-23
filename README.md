@@ -5,11 +5,13 @@ Ethics assignment.
 
 ## What it includes
 
-- A research-aligned home page with trust badges and visible disclaimers
+- A research-aligned home page with trust badges, survey context, and visible disclaimers
 - A symptom checker that asks only for minimal symptom context
 - Frontend-only simulated urgency results: Low, Moderate, and Urgent
 - Emergency red-flag guidance, human consultation reminders, trusted-source
   placeholders, and privacy / AI limitation sections
+- Stage 3 refinements for clearer scope, stronger privacy messaging, and safer
+  result behaviour when users change form inputs
 
 ## Important note
 

@@ -1,5 +1,6 @@
 const form = document.getElementById("guidance-form");
 const validationSummary = document.getElementById("validation-summary");
+const resultsSection = document.getElementById("urgency-results");
 const resultEmpty = document.getElementById("result-empty");
 const resultCard = document.getElementById("result-card");
 const resultPill = document.getElementById("result-pill");
@@ -21,11 +22,16 @@ const durationField = document.getElementById("duration");
 const mainSymptomField = document.getElementById("main-symptom");
 const severityGroup = document.getElementById("severity-group");
 
+const RESULT_EMPTY_DEFAULT =
+  "Complete the symptom checker to view Low, Moderate, or Urgent guidance.";
+const RESULT_EMPTY_CHANGED =
+  "Inputs changed. Run Check Urgency again to view updated simulated guidance.";
+
 const resultContent = {
   Low: {
     title: "Low urgency guidance",
     explanation:
-      "The prototype did not detect a red-flag pattern and the reported severity stayed in the lower range. This does not rule out other causes or future changes.",
+      "The current input did not match a red-flag warning sign and the reported severity stayed in the lower range. This does not rule out other causes or future changes.",
     nextSteps: [
       "Monitor how symptoms change over the next day or two.",
       "Consider seeking medical advice if symptoms persist, worsen, or start affecting daily activities.",
@@ -35,7 +41,7 @@ const resultContent = {
       "If symptoms persist, worsen, or concern you, seek advice from a qualified healthcare professional."
   },
   Moderate: {
-    title: "Moderate guidance",
+    title: "Moderate urgency guidance",
     explanation:
       "The prototype marked this as moderate because the symptoms were reported as more intense or longer-lasting. This result is based on simple prototype logic and should not be treated as medical advice.",
     nextSteps: [
@@ -110,7 +116,7 @@ function showValidation(errors) {
   `;
 }
 
-function validateForm() {
+function validateForm({ shouldScroll = true } = {}) {
   resetValidation();
   const input = buildInputState();
   const errors = getValidationErrors(input);
@@ -133,7 +139,9 @@ function validateForm() {
 
   if (errors.length) {
     showValidation(errors);
-    validationSummary.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    if (shouldScroll) {
+      validationSummary.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
     return false;
   }
 
@@ -204,7 +212,14 @@ function renderResult(input) {
 
   resultPill.className = "urgency-pill";
   resultPill.classList.add(`urgency-pill-${guidance.urgencyLevel.toLowerCase()}`);
-  resultPill.textContent = `${guidance.urgencyLevel} urgency`;
+  resultPill.textContent = guidance.title;
+
+  resultCard.classList.remove(
+    "result-card-low",
+    "result-card-moderate",
+    "result-card-urgent"
+  );
+  resultCard.classList.add(`result-card-${guidance.urgencyLevel.toLowerCase()}`);
 
   resultTitle.textContent = guidance.title;
   resultExplanation.textContent = guidance.explanation;
@@ -225,19 +240,27 @@ function renderResult(input) {
 
   resultEmpty.hidden = true;
   resultCard.hidden = false;
+  resultCard.focus();
 }
 
-function clearResult() {
+function clearResult(message = RESULT_EMPTY_DEFAULT) {
   resultCard.hidden = true;
   resultEmpty.hidden = false;
+  resultEmpty.textContent = message;
   emergencyWarning.hidden = true;
   emergencyWarningText.textContent = "";
+  resultCard.classList.remove(
+    "result-card-low",
+    "result-card-moderate",
+    "result-card-urgent"
+  );
 }
 
 function resetExperience(shouldScroll) {
   form.reset();
   resetValidation();
   clearResult();
+  mockConsultFeedback.textContent = "";
 
   if (shouldScroll) {
     document
@@ -283,19 +306,22 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   if (!validateForm()) {
+    clearResult();
     return;
   }
 
   const input = buildInputState();
   renderResult(input);
-  document
-    .getElementById("urgency-results")
-    .scrollIntoView({ behavior: "smooth", block: "start" });
+  resultsSection.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 form.addEventListener("input", () => {
+  if (!resultCard.hidden) {
+    clearResult(RESULT_EMPTY_CHANGED);
+  }
+
   if (!validationSummary.hidden) {
-    validateForm();
+    validateForm({ shouldScroll: false });
   }
 });
 
@@ -303,6 +329,7 @@ form.addEventListener("reset", () => {
   window.setTimeout(() => {
     resetValidation();
     clearResult();
+    mockConsultFeedback.textContent = "";
   }, 0);
 });
 

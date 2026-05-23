@@ -6,7 +6,7 @@
     <title>CareGuide AI | Clearer symptom guidance. Safer next steps.</title>
     <meta
       name="description"
-      content="CareGuide AI is a responsible AI-assisted healthcare guidance prototype that offers simulated urgency guidance, privacy reminders, and human consultation prompts."
+      content="CareGuide AI is a responsible AI-assisted healthcare guidance prototype that offers simulated urgency guidance, red-flag reminders, privacy safeguards, and human consultation prompts."
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -56,15 +56,18 @@
               <p class="hero-text">
                 CareGuide AI is a calmer alternative to stressful symptom
                 searching. It helps students and young adults sort symptoms into
-                simple urgency levels, notice red-flag warnings, and remember
-                when human medical advice matters.
+                simple urgency levels, notice red-flag warnings, and understand
+                when human medical advice matters. It does not diagnose
+                conditions, recommend medication, or replace a qualified
+                healthcare professional.
               </p>
               <div class="badge-row" aria-label="Trust badges">
                 <span class="info-badge">AI-assisted guidance</span>
+                <span class="info-badge">Urgency guidance only</span>
                 <span class="info-badge">Not a diagnosis</span>
                 <span class="info-badge">Human consultation recommended</span>
                 <span class="info-badge">Privacy-aware prototype</span>
-                <span class="info-badge">Prototype doctor-review indicator</span>
+                <span class="info-badge">Future medical review required</span>
               </div>
               <div class="cta-row">
                 <a class="primary-button" href="#symptom-checker">
@@ -83,7 +86,9 @@
                 <p>
                   Your group research showed that young adults want help knowing
                   when symptoms may need medical attention, without conflicting
-                  or fear-inducing search results.
+                  or fear-inducing search results. This prototype responds with
+                  urgency guidance, visible limitations, and a clear handoff to
+                  human care.
                 </p>
               </div>
               <div class="hero-stats" aria-label="Research highlights">
@@ -108,7 +113,7 @@
               <h3>Urgency-based guidance</h3>
               <p>
                 The checker produces Low, Moderate, or Urgent guidance using
-                simple frontend-only rules.
+                simple frontend-only rules instead of diagnostic claims.
               </p>
             </article>
             <article class="feature-card">
@@ -133,6 +138,47 @@
               </p>
             </article>
           </div>
+
+          <div class="research-strip" aria-labelledby="research-title">
+            <div class="section-heading compact-heading">
+              <div>
+                <p class="eyebrow">Research snapshot</p>
+                <h2 id="research-title">What students and young adults told your team</h2>
+              </div>
+              <p class="section-copy">
+                These findings shaped the focus on urgency guidance, calmer
+                wording, trusted-source transparency, and visible human
+                oversight.
+              </p>
+            </div>
+
+            <div class="research-grid">
+              <article class="research-card">
+                <strong>54.5%</strong>
+                <p>search symptoms online very often, and 54.5% start there when feeling unwell.</p>
+              </article>
+              <article class="research-card">
+                <strong>63.6%</strong>
+                <p>felt frustrated by conflicting information or scary worst-case results.</p>
+              </article>
+              <article class="research-card">
+                <strong>50%</strong>
+                <p>could not tell which sources were trustworthy.</p>
+              </article>
+              <article class="research-card">
+                <strong>77.3%</strong>
+                <p>had experienced uncertainty about whether symptoms required medical attention.</p>
+              </article>
+              <article class="research-card">
+                <strong>77.3%</strong>
+                <p>said professional design and trusted-source references would increase trust.</p>
+              </article>
+              <article class="research-card">
+                <strong>72.7%</strong>
+                <p>said a doctor-review indicator and human consultation option would increase trust.</p>
+              </article>
+            </div>
+          </div>
         </section>
 
         <section class="workflow section-card reveal" aria-labelledby="workflow-title">
@@ -142,8 +188,8 @@
               <h2 id="workflow-title">A simple guidance flow with visible human oversight</h2>
             </div>
             <p class="section-copy">
-              The prototype moves from symptom uncertainty to safer next steps
-              without claiming to diagnose illness.
+              The journey is designed to stay easy to follow: Home, Symptom
+              Checker, Simulated urgency guidance, then safer next steps.
             </p>
           </div>
 
@@ -161,7 +207,8 @@
               <h3>Review simulated urgency guidance</h3>
               <p>
                 The result explains whether the current pattern appears Low,
-                Moderate, or Urgent using simple prototype logic.
+                Moderate, or Urgent using simple prototype logic rather than a
+                medical conclusion.
               </p>
             </article>
             <article class="workflow-card">
@@ -183,10 +230,11 @@
           <div class="section-heading">
             <div>
               <p class="eyebrow">Symptom checker</p>
-              <h2 id="checker-title">Use the symptom checker carefully</h2>
+              <h2 id="checker-title">Check urgency without sharing personal identifiers</h2>
             </div>
             <p class="section-copy">
-              This form is designed for simulated urgency guidance only.
+              This form is designed to produce simulated Low, Moderate, or
+              Urgent guidance only.
             </p>
           </div>
 
@@ -196,19 +244,42 @@
             <span class="progress-pill">3. Decide safer next steps</span>
           </div>
 
+          <div class="checker-overview" aria-label="Checker overview">
+            <article class="mini-card">
+              <h3>What you will receive</h3>
+              <p>
+                A simulated urgency result that explains whether the current
+                pattern appears Low, Moderate, or Urgent.
+              </p>
+            </article>
+            <article class="mini-card">
+              <h3>What this checker will not do</h3>
+              <p>
+                It will not diagnose a condition, recommend medication, or act
+                as a replacement for a qualified healthcare professional.
+              </p>
+            </article>
+            <article class="mini-card">
+              <h3>When to seek help quickly</h3>
+              <p>
+                If red-flag symptoms are present, seek urgent medical help
+                rather than relying on online guidance alone.
+              </p>
+            </article>
+          </div>
+
           <div class="checker-layout">
             <div class="checker-main">
               <div class="callout callout-blue">
                 <strong>Privacy reminder:</strong>
                 Do not enter identifying or highly sensitive personal details.
-                This prototype does not store your responses.
+                This prototype does not store, upload, or share your responses.
               </div>
 
               <div class="callout callout-teal">
                 <strong>AI limitation:</strong>
-                This is not a diagnosis. The guidance shown is simulated for
-                educational purposes and should not be treated as medical
-                advice.
+                This is not a diagnosis. You will receive simulated urgency
+                guidance only, and it should not be treated as medical advice.
               </div>
 
               <form id="guidance-form" novalidate>
@@ -292,7 +363,11 @@
 
                 <div class="form-section">
                   <h3>Red-flag symptoms</h3>
-                  <fieldset id="red-flag-group" class="chip-fieldset">
+                  <fieldset
+                    id="red-flag-group"
+                    class="chip-fieldset"
+                    aria-describedby="red-flag-hint"
+                  >
                     <legend>
                       Select any warning signs that may require urgent medical
                       help.
@@ -359,6 +434,10 @@
                         <span>None of the above</span>
                       </label>
                     </div>
+                    <p id="red-flag-hint" class="field-hint">
+                      Select "None of the above" only if no listed warning
+                      signs apply.
+                    </p>
                   </fieldset>
                 </div>
 
@@ -392,6 +471,7 @@
                 <ul>
                   <li>Share only the symptom details needed for this prototype.</li>
                   <li>Do not enter names, contact details, or record numbers.</li>
+                  <li>You will receive urgency guidance only, not a diagnosis.</li>
                   <li>If severe or life-threatening symptoms are present, seek urgent help immediately.</li>
                 </ul>
               </div>
@@ -400,6 +480,7 @@
                 <ul>
                   <li>It will not diagnose a condition.</li>
                   <li>It will not recommend medication.</li>
+                  <li>It will not claim real doctor approval or clinical certification.</li>
                   <li>It will not replace a qualified healthcare professional.</li>
                 </ul>
               </div>
@@ -423,12 +504,36 @@
             </p>
           </div>
 
+          <div class="urgency-guide" aria-label="Urgency levels explained">
+            <article class="urgency-guide-card urgency-guide-low">
+              <h3>Low</h3>
+              <p>
+                Monitor symptoms, watch for changes, and seek help if symptoms
+                persist, worsen, or concern you.
+              </p>
+            </article>
+            <article class="urgency-guide-card urgency-guide-moderate">
+              <h3>Moderate</h3>
+              <p>
+                Consider seeking professional medical advice soon, especially
+                when symptoms feel intense or last longer.
+              </p>
+            </article>
+            <article class="urgency-guide-card urgency-guide-urgent">
+              <h3>Urgent</h3>
+              <p>
+                Red-flag symptoms may require urgent medical help and should not
+                be assessed through this prototype alone.
+              </p>
+            </article>
+          </div>
+
           <div id="result-empty" class="empty-state">
             Complete the symptom checker to view Low, Moderate, or Urgent
             guidance.
           </div>
 
-          <div id="result-card" class="result-card" hidden>
+          <div id="result-card" class="result-card" hidden tabindex="-1">
             <div id="result-pill" class="urgency-pill urgency-pill-low">
               Low urgency
             </div>
@@ -468,7 +573,7 @@
 
             <div class="result-actions">
               <a class="primary-button" href="#human-consultation">
-                Consult a Human Doctor
+                Review Human Consultation Guidance
               </a>
               <a class="secondary-button" href="#emergency-red-flags">
                 View Emergency Red Flags
@@ -497,6 +602,13 @@
               This list is not exhaustive. If symptoms feel severe, sudden, or
               frightening, seek urgent medical help immediately.
             </p>
+          </div>
+
+          <div class="callout callout-plain">
+            <strong>How to use this section:</strong>
+            Scan these warning signs first. If any apply and symptoms feel
+            severe, sudden, or rapidly worsening, choose urgent medical help
+            over waiting for more online reassurance.
           </div>
 
           <div class="red-flag-grid">
@@ -627,6 +739,13 @@
             </p>
           </div>
 
+          <div class="callout callout-blue">
+            <strong>Honest placeholder notice:</strong>
+            These cards show the types of references a real deployment would
+            need. They are not live citations, and this prototype does not
+            claim external medical approval.
+          </div>
+
           <div class="source-grid">
             <article class="source-card">
               <span class="source-badge">Trusted source placeholder</span>
@@ -685,9 +804,16 @@
             </p>
           </div>
 
+          <div class="signal-row" aria-label="Privacy and limitation signals">
+            <span class="signal-badge">No storage</span>
+            <span class="signal-badge">No upload</span>
+            <span class="signal-badge">No sharing</span>
+            <span class="signal-badge">Human verification needed</span>
+          </div>
+
           <div class="limitations-grid">
             <article class="limit-card">
-              <h3>No real data storage</h3>
+              <h3>Temporary on-page use only</h3>
               <p>
                 This prototype does not store, upload, or share personal health
                 information. Inputs are used only temporarily to simulate
@@ -718,7 +844,7 @@
             <article class="limit-card">
               <h3>No medication recommendations</h3>
               <p>
-                The prototype avoids prescribing drugs or giving treatment plans
+                The prototype avoids suggesting medication or treatment plans
                 because those decisions require qualified medical judgement.
               </p>
             </article>
